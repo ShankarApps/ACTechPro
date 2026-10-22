@@ -1,0 +1,332 @@
+[
+  {
+    "brand": "Voltas",
+    "code": "E1",
+    "meaning": "Communication error between indoor & outdoor unit",
+    "check": "Check communication wiring, connectors, outdoor PCB"
+  },
+  {
+    "brand": "Voltas",
+    "code": "E2",
+    "meaning": "Zero-crossing signal detection error",
+    "check": "Check power supply voltage, indoor PCB"
+  },
+  {
+    "brand": "Voltas",
+    "code": "E3",
+    "meaning": "Indoor fan speed out of control",
+    "check": "Check fan motor, run capacitor, indoor PCB"
+  },
+  {
+    "brand": "Voltas",
+    "code": "E4",
+    "meaning": "Indoor room temperature sensor open/short",
+    "check": "Check sensor connector; replace room sensor"
+  },
+  {
+    "brand": "Voltas",
+    "code": "E5",
+    "meaning": "Overcurrent / IPM Fault",
+    "check": "Check compressor winding, check IPM module, check voltage"
+  },
+  {
+    "brand": "Voltas",
+    "code": "E6",
+    "meaning": "EEPROM error on indoor PCB",
+    "check": "Replace EEPROM / indoor PCB"
+  },
+  {
+    "brand": "Voltas",
+    "code": "EC",
+    "meaning": "Refrigerant leak detected",
+    "check": "Leak test with nitrogen, vacuum, recharge refrigerant"
+  },
+  {
+    "brand": "Daikin",
+    "code": "U0",
+    "meaning": "Refrigerant shortage or piping blocked",
+    "check": "Leak test, measure operating pressures, check expansion valve"
+  },
+  {
+    "brand": "Daikin",
+    "code": "U2",
+    "meaning": "Power supply abnormality / faulty wiring",
+    "check": "Check supply voltage, terminal connections, inverter PCB"
+  },
+  {
+    "brand": "Daikin",
+    "code": "U4",
+    "meaning": "Indoor/outdoor unit communication failure",
+    "check": "Check transmission wiring, indoor & outdoor PCBs"
+  },
+  {
+    "brand": "Daikin",
+    "code": "E3",
+    "meaning": "High pressure switch has operated",
+    "check": "Clean condenser, check outdoor fan, check refrigerant charge"
+  },
+  {
+    "brand": "Daikin",
+    "code": "H6",
+    "meaning": "Compressor operation halt / no feedback",
+    "check": "Check compressor, inverter board, wiring harness"
+  },
+  {
+    "brand": "Daikin",
+    "code": "A1",
+    "meaning": "Indoor PCB defect",
+    "check": "Replace indoor PCB after checking wiring"
+  },
+  {
+    "brand": "LG",
+    "code": "CH01",
+    "meaning": "Indoor air temperature sensor error",
+    "check": "Check sensor resistance & connector; replace sensor"
+  },
+  {
+    "brand": "LG",
+    "code": "CH02",
+    "meaning": "Indoor coil (pipe) sensor error",
+    "check": "Check indoor coil sensor, wiring"
+  },
+  {
+    "brand": "LG",
+    "code": "CH05",
+    "meaning": "Indoor/outdoor communication error",
+    "check": "Check communication cable & connectors, both PCBs"
+  },
+  {
+    "brand": "LG",
+    "code": "CH10",
+    "meaning": "Outdoor coil sensor error",
+    "check": "Check outdoor pipe sensor & wiring"
+  },
+  {
+    "brand": "LG",
+    "code": "CH21",
+    "meaning": "Compressor overcurrent",
+    "check": "Check compressor winding, IPM module, supply voltage"
+  },
+  {
+    "brand": "LG",
+    "code": "CH38",
+    "meaning": "Wrong indoor/outdoor capacity combination",
+    "check": "Verify matched indoor & outdoor models"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E101",
+    "meaning": "Indoor air sensor open/short",
+    "check": "Check indoor air thermistor & connector"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E102",
+    "meaning": "Indoor pipe sensor error",
+    "check": "Check indoor pipe thermistor & harness"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E121",
+    "meaning": "Indoor fan motor error",
+    "check": "Check fan motor, hall IC, indoor PCB"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E201",
+    "meaning": "Communication error between units",
+    "check": "Check comm wiring, outdoor power PCB"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E421",
+    "meaning": "Outdoor pipe sensor error",
+    "check": "Check outdoor pipe thermistor & wiring"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E444",
+    "meaning": "High pressure error",
+    "check": "Clean condenser, check outdoor fan & refrigerant"
+  },
+  {
+    "brand": "Blue Star",
+    "code": "E1",
+    "meaning": "Room temperature sensor error",
+    "check": "Check room sensor connector; replace sensor"
+  },
+  {
+    "brand": "Blue Star",
+    "code": "E2",
+    "meaning": "Indoor coil sensor error",
+    "check": "Check coil sensor & wiring"
+  },
+  {
+    "brand": "Blue Star",
+    "code": "E4",
+    "meaning": "Drain pump / float switch error",
+    "check": "Clear drain line, check pump & float switch"
+  },
+  {
+    "brand": "Blue Star",
+    "code": "E5",
+    "meaning": "Indoor/outdoor communication error",
+    "check": "Check comm wiring & PCBs"
+  },
+  {
+    "brand": "Blue Star",
+    "code": "E6",
+    "meaning": "Overcurrent protection",
+    "check": "Check compressor, IPM module, supply voltage"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E1",
+    "meaning": "Room temperature sensor error",
+    "check": "Check & replace room sensor"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E2",
+    "meaning": "Indoor coil sensor error",
+    "check": "Check coil sensor, wiring harness"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E3",
+    "meaning": "Outdoor temperature sensor error",
+    "check": "Check outdoor sensor & wiring"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E5",
+    "meaning": "Communication error",
+    "check": "Check comm wiring between units, PCBs"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E6",
+    "meaning": "IPM / overcurrent fault",
+    "check": "Check IPM module, compressor winding, voltage"
+  },
+  {
+    "brand": "Carrier",
+    "code": "E8",
+    "meaning": "Overheating protection activated",
+    "check": "Clean filters & condenser, check airflow & fan"
+  },
+  {
+    "brand": "Hitachi",
+    "code": "01",
+    "meaning": "Communication alarm",
+    "check": "Check wiring between indoor & outdoor units"
+  },
+  {
+    "brand": "Hitachi",
+    "code": "02",
+    "meaning": "Outdoor unit abnormal",
+    "check": "Check outdoor PCB & power supply"
+  },
+  {
+    "brand": "Hitachi",
+    "code": "11",
+    "meaning": "Indoor air sensor alarm",
+    "check": "Check indoor thermistor & connector"
+  },
+  {
+    "brand": "Hitachi",
+    "code": "12",
+    "meaning": "Indoor coil sensor alarm",
+    "check": "Check indoor coil thermistor"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F1",
+    "meaning": "Indoor ambient sensor error",
+    "check": "Check & replace indoor sensor"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F2",
+    "meaning": "Indoor coil sensor error",
+    "check": "Check coil sensor & harness"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F3",
+    "meaning": "Outdoor sensor error",
+    "check": "Check outdoor sensor & wiring"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F5",
+    "meaning": "Communication error",
+    "check": "Check comm wiring & both PCBs"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F6",
+    "meaning": "IPM module fault",
+    "check": "Check IPM module, compressor, supply voltage"
+  },
+  {
+    "brand": "Whirlpool",
+    "code": "F8",
+    "meaning": "Overcurrent protection",
+    "check": "Check compressor load, voltage stability"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "code": "E5",
+    "meaning": "Indoor fan motor fault",
+    "check": "Check indoor fan motor & PCB"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "code": "E6",
+    "meaning": "Indoor/outdoor communication error",
+    "check": "Check comm wiring, both PCBs"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "code": "H6",
+    "meaning": "Outdoor fan motor fault",
+    "check": "Check outdoor fan motor & inverter PCB"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "code": "F3",
+    "meaning": "Discharge pipe temperature sensor fault",
+    "check": "Check discharge sensor, refrigerant charge"
+  },
+  {
+    "brand": "O'General",
+    "code": "11",
+    "meaning": "Indoor air thermistor error",
+    "check": "Check room air thermistor & connector"
+  },
+  {
+    "brand": "O'General",
+    "code": "12",
+    "meaning": "Indoor coil thermistor error",
+    "check": "Check indoor coil thermistor"
+  },
+  {
+    "brand": "O'General",
+    "code": "14",
+    "meaning": "Outdoor sensor error",
+    "check": "Check outdoor thermistor & wiring"
+  },
+  {
+    "brand": "O'General",
+    "code": "21",
+    "meaning": "DC fan / current detection error",
+    "check": "Check indoor DC fan motor & PCB"
+  },
+  {
+    "brand": "O'General",
+    "code": "23",
+    "meaning": "Discharge pipe thermistor error",
+    "check": "Check discharge thermistor, refrigerant level"
+  }
+]

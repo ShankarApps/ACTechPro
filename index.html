@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AC Tech Pro — AC Error Code Lookup</title>
+  <meta name="description" content="Fast offline lookup of air conditioner error codes, diagnosis and repair checks." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen pb-24">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-10 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-4 py-3">
+    <div class="max-w-xl mx-auto flex items-center gap-3">
+      <img src="icon-192.png" alt="AC Tech Pro" class="w-9 h-9 rounded-xl" />
+      <div>
+        <h1 class="text-lg font-bold leading-tight">AC Tech Pro</h1>
+        <p class="text-xs text-slate-400">Error code lookup &middot; works offline</p>
+      </div>
+      <span id="netBadge" class="ml-auto text-xs px-2 py-1 rounded-full bg-emerald-900 text-emerald-300">ONLINE</span>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-4">
+
+    <!-- Search -->
+    <div class="mt-4">
+      <input id="searchBox" type="search" autocomplete="off" placeholder="Search code, e.g. E5, CH01, U4..."
+        class="w-full text-base rounded-2xl bg-slate-800 border border-slate-700 px-5 py-4 outline-none focus:border-cyan-500 placeholder-slate-500" />
+    </div>
+
+    <!-- Brands -->
+    <h2 class="mt-6 mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">Select Brand</h2>
+    <div id="brandGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+
+    <!-- Results -->
+    <h2 id="resultsTitle" class="mt-6 mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400"></h2>
+    <div id="output"></div>
+
+    <p class="mt-8 text-xs text-slate-500 leading-relaxed">
+      Diagnostic reference only. Always verify with the official service manual for the exact model before repair.
+    </p>
+  </main>
+
+  <!-- AdMob / AdSense placeholder. Replace this block with your real ad unit code.
+       (AdSense works on the web version. After wrapping to APK, swap to AdMob via Capacitor.) -->
+  <div id="ad-banner">
+    <span>AD SPACE &middot; 320&times;50 &middot; insert your ad code here</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
