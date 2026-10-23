@@ -21,13 +21,22 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
       - name: Prepare Android SDK
         uses: android-actions/setup-android@v3
         with:
-          packages: |
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+
+      - name: Sync web assets into Android project
+        run: npx cap sync android
 
       - name: Generate persistent signing key if not configured
         env:
