@@ -1,0 +1,113 @@
+name: AC Tech Pro Android Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Prepare Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Generate persistent signing key if not configured
+        env:
+          KEY_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -e
+          if [ -z "$KEY_B64" ] && [ -z "$STORE_PASS" ] && [ -z "$KEY_ALIAS" ] && [ -z "$KEY_PASS" ]; then
+            mkdir -p signing-setup
+            PASS="$(openssl rand -hex 24)"
+            keytool -genkeypair -v \
+              -keystore signing-setup/actechpro-release.jks \
+              -storepass "$PASS" -keypass "$PASS" \
+              -alias actechpro -keyalg RSA -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=AC Tech Pro"
+            printf '%s' "$PASS" > signing-setup/store-password.txt
+            cat > signing-setup/signing-info.txt <<INFO
+          ANDROID_KEYSTORE_PASSWORD=$PASS
+          ANDROID_KEY_ALIAS=actechpro
+          ANDROID_KEY_PASSWORD=$PASS
+          INFO
+            echo "SIGNING_SETUP=true" >> "$GITHUB_ENV"
+          elif [ -z "$KEY_B64" ] || [ -z "$STORE_PASS" ] || [ -z "$KEY_ALIAS" ] || [ -z "$KEY_PASS" ]; then
+            echo "Signing secrets are incomplete. Configure all four secrets."
+            exit 1
+          else
+            echo "SIGNING_SETUP=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Upload signing setup (first run only)
+        if: env.SIGNING_SETUP == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: actechpro-signing-setup
+          path: signing-setup/
+          retention-days: 7
+
+      - name: Stop after signing setup
+        if: env.SIGNING_SETUP == 'true'
+        run: |
+          echo "Download the signing setup artifact and configure GitHub Secrets before building the APK."
+
+      - name: Decode signing key
+        if: env.SIGNING_SETUP == 'false'
+        env:
+          KEY_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEY_B64" | base64 --decode > "$RUNNER_TEMP/actechpro-release.jks"
+
+      - name: Build release APK
+        if: env.SIGNING_SETUP == 'false'
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease
+
+      - name: Sign release APK
+        if: env.SIGNING_SETUP == 'false'
+        env:
+          STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -e
+          SDK="${ANDROID_HOME}/build-tools"
+          TOOLS="$(find "$SDK" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)"
+          UNSIGNED="android/app/build/outputs/apk/release/app-release-unsigned.apk"
+          test -f "$UNSIGNED"
+          "$TOOLS/zipalign" -f -p 4 "$UNSIGNED" "$RUNNER_TEMP/aligned.apk"
+          "$TOOLS/apksigner" sign \
+            --ks "$RUNNER_TEMP/actechpro-release.jks" \
+            --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass env:STORE_PASS \
+            --key-pass env:KEY_PASS \
+            --out "$RUNNER_TEMP/AC-Tech-Pro-release.apk" \
+            "$RUNNER_TEMP/aligned.apk"
+          "$TOOLS/apksigner" verify --verbose "$RUNNER_TEMP/AC-Tech-Pro-release.apk"
+
+      - name: Upload signed APK
+        if: env.SIGNING_SETUP == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: AC-Tech-Pro-signed-release
+          path: ${{ runner.temp }}/AC-Tech-Pro-release.apk
+          retention-days: 14
