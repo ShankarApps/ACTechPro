@@ -1,3 +1,5 @@
+/* AC Tech Pro — styles (no external libraries, fully offline) */
+
 :root {
   --bg: #121212;
   --surface: #1e1e1e;
@@ -6,13 +8,19 @@
   --text: #f5f5f5;
   --muted: #b0b0b0;
   --accent: #ff9800;
+  --accent-dark: #e65100;
   --accent-soft: #3a2a10;
   --danger: #ff5252;
+
+  /* Safe areas: works with env() and with Capacitor's injected variables */
   --safe-top: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
   --safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
 }
+
 * { box-sizing: border-box; }
+
 html { -webkit-tap-highlight-color: transparent; background: var(--bg); }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -21,9 +29,12 @@ body {
   line-height: 1.45;
   min-height: 100vh;
 }
+
 button, input { font: inherit; color: inherit; }
 button { border: 0; cursor: pointer; }
 [hidden] { display: none !important; }
+
+/* Header */
 .app-header {
   position: sticky;
   top: 0;
@@ -42,6 +53,8 @@ button { border: 0; cursor: pointer; }
 .logo { width: 40px; height: 40px; border-radius: 10px; }
 .app-header h1 { margin: 0; font-size: 1.25rem; font-weight: 800; }
 .app-header p { margin: 0; font-size: 0.78rem; color: var(--muted); }
+
+/* Layout */
 .app-main {
   max-width: 36rem;
   margin: 0 auto;
@@ -56,6 +69,8 @@ button { border: 0; cursor: pointer; }
   color: var(--muted);
 }
 .accent { color: var(--accent); }
+
+/* Brand buttons */
 .brand-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -77,6 +92,8 @@ button { border: 0; cursor: pointer; }
   background: var(--accent-soft);
   border-color: var(--accent);
 }
+
+/* Back button */
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -89,6 +106,8 @@ button { border: 0; cursor: pointer; }
   font-weight: 700;
 }
 .back-btn:active { background: var(--border); }
+
+/* Code input */
 .code-input {
   width: 100%;
   font-size: 1.25rem;
@@ -102,7 +121,10 @@ button { border: 0; cursor: pointer; }
 }
 .code-input::placeholder { color: #808080; font-weight: 500; letter-spacing: 0; }
 .code-input:focus { border-color: var(--accent); }
+
 #output { margin-top: 18px; }
+
+/* Result card */
 .detail-card {
   background: var(--surface);
   border: 2px solid var(--accent);
@@ -129,6 +151,8 @@ button { border: 0; cursor: pointer; }
 }
 .value { margin: 0 0 16px; font-size: 1.02rem; color: var(--text); }
 .value:last-child { margin-bottom: 0; }
+
+/* Messages */
 .msg {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -148,4 +172,79 @@ button { border: 0; cursor: pointer; }
   font-weight: 800;
 }
 .chip:active { background: var(--accent); color: #121212; }
-.disclaimer { margin: 28px 0 0; font-size: 0.75rem; color: #8a8a8a; }
+
+.disclaimer {
+  margin: 28px 0 0;
+  font-size: 0.75rem;
+  color: #8a8a8a;
+}
+
+/* ---------- series buttons ---------- */
+.series-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.series-grid .brand-btn { text-align: center; }
+
+/* ---------- reset badge, steps list, details button ---------- */
+.badges { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
+.badges .big-code { margin-bottom: 0; }
+.reset-badge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+.steps { margin: 0 0 16px; padding-left: 1.25rem; }
+.steps li { margin-bottom: 10px; font-size: 1.02rem; }
+.steps li:last-child { margin-bottom: 0; }
+.more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #121212;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.more-btn:active { filter: brightness(0.85); }
+
+/* ---------- flow chart viewer ---------- */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: calc(var(--safe-top) + 10px) 12px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.viewer-title { flex: 1; font-weight: 700; }
+.viewer-btn {
+  min-width: 48px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.viewer-btn.close { background: var(--accent); color: #121212; font-size: 0.95rem; }
+.viewer-scroll {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+  padding-bottom: var(--safe-bottom);
+}
+.viewer-scroll img { display: block; width: 200%; max-width: none; height: auto; }

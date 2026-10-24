@@ -150,36 +150,6 @@
     "check": "Clean condenser, check outdoor fan & refrigerant"
   },
   {
-    "brand": "Blue Star",
-    "code": "E1",
-    "meaning": "Room temperature sensor error",
-    "check": "Check room sensor connector; replace sensor"
-  },
-  {
-    "brand": "Blue Star",
-    "code": "E2",
-    "meaning": "Indoor coil sensor error",
-    "check": "Check coil sensor & wiring"
-  },
-  {
-    "brand": "Blue Star",
-    "code": "E4",
-    "meaning": "Drain pump / float switch error",
-    "check": "Clear drain line, check pump & float switch"
-  },
-  {
-    "brand": "Blue Star",
-    "code": "E5",
-    "meaning": "Indoor/outdoor communication error",
-    "check": "Check comm wiring & PCBs"
-  },
-  {
-    "brand": "Blue Star",
-    "code": "E6",
-    "meaning": "Overcurrent protection",
-    "check": "Check compressor, IPM module, supply voltage"
-  },
-  {
     "brand": "Carrier",
     "code": "E1",
     "meaning": "Room temperature sensor error",
@@ -328,5 +298,492 @@
     "code": "23",
     "meaning": "Discharge pipe thermistor error",
     "check": "Check discharge thermistor, refrigerant level"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "C4",
+    "meaning": "Communication error between Inverter Drive and IDU",
+    "cause": "1. Loose or improper connection (A-B config). 2. Communication shield not earthed. 3. Drive faulty / no firmware / wrong firmware. 4. IDU Controller faulty / wrong firmware. 5. Interface PCB faulty.",
+    "steps": [
+      "Check if the communication wire is not connected properly. If so, connect the wire properly and restart the system.",
+      "Check for no firmware or wrong firmware in the Drive. If so, program the Drive with the correct firmware.",
+      "Check for wrong firmware in the IDU Controller. If so, program the IDU Controller with the correct firmware.",
+      "Check if the Interface PCB is faulty: remove the communication cable connector from the Interface PCB and short A1 with A2 and B1 with B2 using jumper cables, and also check by powering OFF the Interface Card. If faulty, replace the Interface Card.",
+      "If still not resolved, replace the IDU Controller and check whether the problem is resolved.",
+      "If it is still not resolved, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-01.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d8",
+    "meaning": "Communication abnormal between Inverter Drive and IDU (declared by the Drive)",
+    "cause": "1. Loose or improper connection (A-B config). 2. Communication shield not earthed. 3. Drive faulty / no firmware / wrong firmware. 4. IDU Controller faulty / wrong firmware. 5. Interface PCB faulty.",
+    "steps": [
+      "Check if the communication wire is not connected properly. If so, connect the wire properly and restart the system.",
+      "Check for no firmware or wrong firmware in the Drive. If so, program the Drive with the correct firmware.",
+      "Check for wrong firmware in the IDU Controller. If so, program the IDU Controller with the correct firmware.",
+      "Check if the Interface PCB is faulty: remove the communication cable connector from the Interface PCB and short A1 with A2 and B1 with B2 using jumper cables, and also check by powering OFF the Interface Card. If faulty, replace the Interface Card.",
+      "If still not resolved, replace the IDU Controller and check whether the problem is resolved.",
+      "If it is still not resolved, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-01.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "C6",
+    "meaning": "Communication error between IDU and ODU Interface PCB",
+    "cause": "1. Loose or improper connection (A-B config). 2. Communication shield not earthed. 3. IDU Controller faulty / wrong firmware. 4. Interface PCB faulty / no firmware / wrong firmware.",
+    "steps": [
+      "Check if the communication wire is not connected properly. If so, connect the wire properly and restart the system.",
+      "Check for no firmware or wrong firmware in the Interface Card. If so, program the Interface Card with the correct firmware.",
+      "Check for wrong firmware in the IDU Controller. If so, program the IDU Controller with the correct firmware.",
+      "If still not resolved, replace the Interface Card and check whether the problem is resolved.",
+      "If it is still not resolved, replace the IDU Controller."
+    ],
+    "image": "images/bluestar-dsai/page-02.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "dd",
+    "meaning": "Phase loss / imbalance error",
+    "cause": "Drive input has one phase missing, or input voltage is imbalanced.",
+    "steps": [
+      "Check if a drive input phase is missing. If so, connect the missing phase properly and restart the system.",
+      "If no phase is missing, wait for the voltage imbalance condition to clear and then restart the system."
+    ],
+    "image": "images/bluestar-dsai/page-02.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d3",
+    "meaning": "DC Bus over voltage error",
+    "cause": "DC Bus voltage is above 752V.",
+    "reset": "Auto reset",
+    "steps": [
+      "Recovery: the error resets when DC Bus voltage falls below 660V.",
+      "The chart gives no other steps for this code."
+    ],
+    "image": "images/bluestar-dsai/page-02.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d2",
+    "meaning": "Inverter Drive DC under voltage error",
+    "cause": "DC Bus voltage is below 330V.",
+    "reset": "Auto reset",
+    "steps": [
+      "Recovery: the error resets when DC Bus voltage rises above 365V.",
+      "The chart gives no other steps for this code."
+    ],
+    "image": "images/bluestar-dsai/page-02.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "CF",
+    "meaning": "Capacity setting error",
+    "cause": "Capacity not set.",
+    "steps": [
+      "Set the capacity through the Wired Handset and give a power cycle to the unit.",
+      "Follow the capacity setting given in the training PPT."
+    ],
+    "image": "images/bluestar-dsai/page-02.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "A1",
+    "meaning": "Fixed 1 ODU SPPR / Fan motor TOP error",
+    "cause": "1. Single phasing / phase reversal / phase asymmetry error declared by the SPPR. 2. Condenser fan tripped on thermal overload protection.",
+    "steps": [
+      "Look at the LED on the SPPR.",
+      "LED glowing continuously: condenser fan TOP issue.",
+      "LED OFF: phase loss error. Check power connections to the unit and the SPPR input, correct the power supply and restart the unit.",
+      "LED blinking fast: phase asymmetry fault (+/- 65V). The system restarts once all phases are balanced.",
+      "LED blinking slowly: phase reversal fault. Connect the incoming wires as per phase sequence (R, Y, B).",
+      "If the TOP is OK, check continuity of SPPR terminals 15 and 18 when supply is healthy. If there is no continuity, the SPPR is faulty and must be replaced.",
+      "If the issue still persists after all the above steps, loop the IDU Controller input terminals and restart the unit. If the error does not clear, replace the IDU Controller."
+    ],
+    "image": "images/bluestar-dsai/page-03.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d1",
+    "meaning": "IGBT Drive IC error",
+    "cause": "1. Unstable input power supply. 2. IGBT Drive IC faulty.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check for unstable input power supply. If so, wait for the voltage imbalance condition to clear and then restart the system.",
+      "Otherwise give a power cycle to the Drive. If the issue persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-03.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "b1",
+    "meaning": "IGBT Drive IC error",
+    "cause": "1. Unstable input power supply. 2. IGBT Drive IC faulty.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check for unstable input power supply. If so, wait for the voltage imbalance condition to clear and then restart the system.",
+      "Otherwise give a power cycle to the Drive. If the issue persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-03.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d6",
+    "meaning": "IGBT high temperature error",
+    "cause": "Drive IGBT module temperature exceeds 120°C.",
+    "steps": [
+      "Check if the Drive heatsink is assembled properly. If not, assemble it properly and recheck.",
+      "If the heatsink is fine, it is a Drive issue: replace the Drive and recheck."
+    ],
+    "image": "images/bluestar-dsai/page-04.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "dC",
+    "meaning": "Step out (loss of synchronism) error",
+    "cause": "Drive not responding to start command.",
+    "steps": [
+      "Check for loose connection of the Drive output wire to the compressor. If loose, connect properly and restart the system.",
+      "Check for burn marks and hardening of the compressor supply harness. If found, replace the compressor harness.",
+      "Disconnect the compressor wires and check continuity between the compressor earth and each of the U, V and W phases. If there is a short, the compressor is faulty: replace the compressor.",
+      "If all the above are fine, the Drive is internally faulty: replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-04.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E1",
+    "meaning": "Inverter ODU HP/TOP trip",
+    "cause": "1. High pressure in discharge line. 2. Condenser fan tripped on thermal overload protection. 3. Loose connection. 4. ODU Interface Card issue.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check the discharge line pressure. If it is not OK, remove excess refrigerant and restart.",
+      "Check if the condenser fan motor TOP has tripped. If so, check the motor and restart.",
+      "Check for loose connection at the Interface Card input terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the ODU Interface Card input terminals and restart the unit. If the error does not clear, replace the ODU Interface Card."
+    ],
+    "image": "images/bluestar-dsai/page-05.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E2",
+    "meaning": "Inverter ODU HP/TOP trip",
+    "cause": "1. High pressure in discharge line. 2. Condenser fan tripped on thermal overload protection. 3. Loose connection. 4. ODU Interface Card issue.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check the discharge line pressure. If it is not OK, remove excess refrigerant and restart.",
+      "Check if the condenser fan motor TOP has tripped. If so, check the motor and restart.",
+      "Check for loose connection at the Interface Card input terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the ODU Interface Card input terminals and restart the unit. If the error does not clear, replace the ODU Interface Card."
+    ],
+    "image": "images/bluestar-dsai/page-05.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E3",
+    "meaning": "Inverter ODU LP/DLT trip",
+    "cause": "1. Low pressure in suction line. 2. High discharge line temperature. 3. Loose connection. 4. DLT switch faulty. 5. ODU Interface Card fault.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check the suction line pressure. If it is not OK, top up refrigerant and restart.",
+      "Check if the discharge line temperature exceeds 130°C. If so, adjust suction superheat by gas balancing.",
+      "Check continuity of the DLT switch. If the DLT switch is faulty, replace it and restart.",
+      "Check for loose connection at the Interface Card input terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the ODU Interface Card input terminals and restart the unit. If the error does not clear, replace the ODU Interface Card."
+    ],
+    "image": "images/bluestar-dsai/page-06.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E4",
+    "meaning": "Inverter ODU LP/DLT trip",
+    "cause": "1. Low pressure in suction line. 2. High discharge line temperature. 3. Loose connection. 4. DLT switch faulty. 5. ODU Interface Card fault.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check the suction line pressure. If it is not OK, top up refrigerant and restart.",
+      "Check if the discharge line temperature exceeds 130°C. If so, adjust suction superheat by gas balancing.",
+      "Check continuity of the DLT switch. If the DLT switch is faulty, replace it and restart.",
+      "Check for loose connection at the Interface Card input terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the ODU Interface Card input terminals and restart the unit. If the error does not clear, replace the ODU Interface Card."
+    ],
+    "image": "images/bluestar-dsai/page-06.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E5",
+    "meaning": "Fixed 1 ODU HP/LP/DLT trip",
+    "cause": "1. High pressure in discharge line. 2. Low pressure in suction line. 3. High discharge line temperature. 4. Loose connection. 5. DLT switch faulty. 6. IDU PCB fault.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check the suction line pressure. If it is not OK, top up refrigerant and restart.",
+      "Check the discharge line pressure. If it is not OK, remove excess refrigerant and restart.",
+      "Check if the discharge line temperature exceeds 130°C. If so, adjust suction superheat by gas balancing.",
+      "Check continuity of the DLT switch. If the DLT switch is faulty, replace it and restart.",
+      "Check for loose connection at the IDU Controller terminals as well as the ODU terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the IDU PCB terminals and restart the unit. If the error does not clear, replace the IDU PCB."
+    ],
+    "image": "images/bluestar-dsai/page-07.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "E6",
+    "meaning": "Fixed 1 ODU HP/LP/DLT trip",
+    "cause": "1. High pressure in discharge line. 2. Low pressure in suction line. 3. High discharge line temperature. 4. Loose connection. 5. DLT switch faulty. 6. IDU PCB fault.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check the suction line pressure. If it is not OK, top up refrigerant and restart.",
+      "Check the discharge line pressure. If it is not OK, remove excess refrigerant and restart.",
+      "Check if the discharge line temperature exceeds 130°C. If so, adjust suction superheat by gas balancing.",
+      "Check continuity of the DLT switch. If the DLT switch is faulty, replace it and restart.",
+      "Check for loose connection at the IDU Controller terminals as well as the ODU terminals. If loose, tighten the connection and restart.",
+      "If the issue still persists after all the above steps, loop the IDU PCB terminals and restart the unit. If the error does not clear, replace the IDU PCB."
+    ],
+    "image": "images/bluestar-dsai/page-07.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "C5",
+    "meaning": "Communication error between IDU Controller and Wired Handset",
+    "cause": "1. Loose or improper connection. 2. Faulty harness. 3. Faulty Wired Handset. 4. Faulty IDU Controller.",
+    "steps": [
+      "Check if the Wired Handset communication wire is loose at either end. If so, connect the wire properly and recheck.",
+      "Check if the Wired Handset harness is faulty. If so, replace the harness and recheck.",
+      "Check if the Wired Handset is faulty. If so, replace the Wired Handset and recheck.",
+      "If all the above are fine, replace the IDU PCB and recheck."
+    ],
+    "image": "images/bluestar-dsai/page-08.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "U3",
+    "meaning": "IDU room temperature sensor failure",
+    "cause": "1. Sensor disconnected from IDU Controller. 2. Sensor loose connection. 3. Sensor cable cut. 4. Sensor cable short. 5. Sensor defective. 6. Faulty IDU Controller.",
+    "steps": [
+      "Check if the sensor is disconnected from the IDU PCB. If so, connect it and recheck.",
+      "Check if the sensor connector is loose on the IDU PCB. If so, connect it properly and recheck.",
+      "Check if the sensor wire is cut. If so, replace the sensor and recheck.",
+      "Check if the sensor wire is shorted. If so, replace the sensor and recheck.",
+      "If all the above are fine, replace the IDU PCB and recheck."
+    ],
+    "image": "images/bluestar-dsai/page-08.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "U4",
+    "meaning": "IDU liquid sensor failure",
+    "cause": "1. Sensor disconnected from IDU Controller. 2. Sensor loose connection. 3. Sensor cable cut. 4. Sensor cable short. 5. Sensor defective. 6. Faulty IDU Controller.",
+    "steps": [
+      "Check if the sensor is disconnected from the IDU PCB. If so, connect it and recheck.",
+      "Check if the sensor connector is loose on the IDU PCB. If so, connect it properly and recheck.",
+      "Check if the sensor wire is cut. If so, replace the sensor and recheck.",
+      "Check if the sensor wire is shorted. If so, replace the sensor and recheck.",
+      "If all the above are fine, replace the IDU PCB and recheck."
+    ],
+    "image": "images/bluestar-dsai/page-08.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "U5",
+    "meaning": "IDU gas temperature sensor failure",
+    "cause": "1. Sensor disconnected from IDU Controller. 2. Sensor loose connection. 3. Sensor cable cut. 4. Sensor cable short. 5. Sensor defective. 6. Faulty IDU Controller.",
+    "steps": [
+      "Check if the sensor is disconnected from the IDU PCB. If so, connect it and recheck.",
+      "Check if the sensor connector is loose on the IDU PCB. If so, connect it properly and recheck.",
+      "Check if the sensor wire is cut. If so, replace the sensor and recheck.",
+      "Check if the sensor wire is shorted. If so, replace the sensor and recheck.",
+      "If all the above are fine, replace the IDU PCB and recheck."
+    ],
+    "image": "images/bluestar-dsai/page-08.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "FA",
+    "meaning": "Frozen protection error",
+    "cause": "Inverter compressor liquid line temperature is going below 2°C. 1. Faulty IDU fan motor. 2. Evaporator coil blocked. 3. EXV stuck at full step. 4. Gas overcharge and low ambient.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check if the IDU fan motor is faulty. If so, replace the IDU fan motor.",
+      "Check if the evaporator coil or filter is blocked. If so, clean the evaporator coil or filter and restart.",
+      "Check if the EXV is stuck at full step. If so, replace the EXV and recheck.",
+      "Check for gas overcharge. If so, remove the excess gas."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "FP",
+    "meaning": "Frozen protection error",
+    "cause": "Inverter compressor liquid line temperature is going below 2°C. 1. Faulty IDU fan motor. 2. Evaporator coil blocked. 3. EXV stuck at full step. 4. Gas overcharge and low ambient.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check if the IDU fan motor is faulty. If so, replace the IDU fan motor.",
+      "Check if the evaporator coil or filter is blocked. If so, clean the evaporator coil or filter and restart.",
+      "Check if the EXV is stuck at full step. If so, replace the EXV and recheck.",
+      "Check for gas overcharge. If so, remove the excess gas."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d4",
+    "meaning": "Over load limit warning",
+    "cause": "Current is higher than the normal current drawn by the compressor.",
+    "steps": [
+      "Check for any condenser block condition and restart.",
+      "If the issue still persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "b6",
+    "meaning": "Compressor current (thermal) overload error (S/W)",
+    "cause": "Current is higher than the normal current drawn by the compressor.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check for any condenser block condition and restart.",
+      "If the issue still persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "b5",
+    "meaning": "Compressor current (thermal) overload error (S/W)",
+    "cause": "Current is higher than the normal current drawn by the compressor.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check for any condenser block condition and restart.",
+      "If the issue still persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d9",
+    "meaning": "Over current error (peak current)",
+    "cause": "Inverter output current exceeds the protection value.",
+    "reset": "Auto reset",
+    "steps": [
+      "Check for loose connection of the Drive output wire to the compressor. If loose, connect properly and restart the system.",
+      "Check for burn marks and hardening of the compressor supply harness. If found, replace the compressor harness.",
+      "Disconnect the compressor wires and check continuity between the compressor earth and each of the U, V and W phases. If there is a short, the compressor is faulty: replace the compressor.",
+      "If all the above are fine, the Drive is internally faulty: replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "b9",
+    "meaning": "Over current error (peak current)",
+    "cause": "Inverter output current exceeds the protection value.",
+    "reset": "Manual reset",
+    "steps": [
+      "Check for loose connection of the Drive output wire to the compressor. If loose, connect properly and restart the system.",
+      "Check for burn marks and hardening of the compressor supply harness. If found, replace the compressor harness.",
+      "Disconnect the compressor wires and check continuity between the compressor earth and each of the U, V and W phases. If there is a short, the compressor is faulty: replace the compressor.",
+      "If all the above are fine, the Drive is internally faulty: replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-09.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "dA",
+    "meaning": "Instantaneous voltage drop error",
+    "cause": "1. Unstable input power supply. 2. Drive faulty.",
+    "steps": [
+      "Check for unstable input power supply. If so, wait for the voltage imbalance condition to clear and then restart the system.",
+      "Otherwise give a power cycle to the Drive. If the issue persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "db",
+    "meaning": "MCU reset error",
+    "cause": "1. Loose RS-485 connection. 2. Drive faulty.",
+    "steps": [
+      "Check if the communication wire is not connected properly. If so, connect the wire properly and restart the system.",
+      "Otherwise give a power cycle to the Drive. If the issue persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d7",
+    "meaning": "CT value detect error",
+    "cause": "Drive CT faulty.",
+    "steps": [
+      "Give a power cycle to the Drive. If the issue persists, replace the Drive."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "d5",
+    "meaning": "Gas shortage error",
+    "cause": "1. Lesser gas charge. 2. Gas leakage.",
+    "steps": [
+      "The chart gives no check steps for this code. The causes are low gas charge or gas leakage."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "F1",
+    "meaning": "Fire alarm",
+    "cause": "Fire alarm input is open.",
+    "steps": [
+      "The chart gives no check steps for this code. The fire alarm input is open."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Blue Star",
+    "series": "DSAI (Digipower Drive)",
+    "code": "FL",
+    "meaning": "Filter cleaning warning",
+    "cause": "IDU fan motor run hours are more than the filter cleaning warning run hours set value.",
+    "steps": [
+      "The chart gives no check steps for this code. The warning appears when the IDU fan motor run hours pass the filter cleaning warning set value."
+    ],
+    "image": "images/bluestar-dsai/page-10.png"
   }
 ]

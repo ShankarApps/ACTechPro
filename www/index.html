@@ -25,14 +25,25 @@
 
   <main class="app-main">
 
+    <!-- Screen 1: brand -->
     <section id="screenBrand">
       <h2 class="section-title">Select brand</h2>
       <div id="brandGrid" class="brand-grid"></div>
     </section>
 
+    <!-- Screen 2: series (only for brands that have series) -->
+    <section id="screenSeries" hidden>
+      <button id="backSeries" class="back-btn" type="button">&larr; Change brand</button>
+      <h2 class="section-title">Brand: <span id="seriesBrandName" class="accent"></span></h2>
+      <h2 class="section-title">Select series</h2>
+      <div id="seriesGrid" class="series-grid"></div>
+    </section>
+
+    <!-- Screen 3: error code -->
     <section id="screenCode" hidden>
-      <button id="backBtn" class="back-btn" type="button">&larr; Change brand</button>
+      <button id="backCode" class="back-btn" type="button">&larr; Back</button>
       <h2 class="section-title">Brand: <span id="brandName" class="accent"></span></h2>
+      <h2 id="seriesLine" class="section-title" hidden>Series: <span id="seriesName" class="accent"></span></h2>
 
       <input id="codeInput" class="code-input" type="search" autocomplete="off"
              autocapitalize="characters" spellcheck="false"
@@ -45,6 +56,17 @@
       Diagnostic reference only. Always verify with the official service manual for the exact model before repair.
     </p>
   </main>
+
+  <!-- Flow chart viewer -->
+  <div id="viewer" class="viewer" hidden>
+    <div class="viewer-bar">
+      <span class="viewer-title">Flow chart</span>
+      <button id="zoomOut" type="button" class="viewer-btn">&minus;</button>
+      <button id="zoomIn" type="button" class="viewer-btn">+</button>
+      <button id="viewerClose" type="button" class="viewer-btn close">Close</button>
+    </div>
+    <div class="viewer-scroll"><img id="viewerImg" alt="Flow chart" /></div>
+  </div>
 
   <script src="app.js"></script>
 </body>
