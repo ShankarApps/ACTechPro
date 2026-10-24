@@ -40,7 +40,10 @@ async function loadDB() {
 }
 
 /* ---------- screens ---------- */
+let current = 'brand';
 function show(which) {
+  current = which;
+  $('bottomBar').hidden = which === 'brand';
   screenBrand.hidden  = which !== 'brand';
   screenSeries.hidden = which !== 'series';
   screenCode.hidden   = which !== 'code';
@@ -75,7 +78,6 @@ function selectBrand(brand) {
       btn.addEventListener('click', () => selectSeries(s));
       seriesGrid.appendChild(btn);
     });
-    history.pushState({ screen: 'series' }, '');
     show('series');
   } else {
     openCodeScreen();
@@ -93,7 +95,6 @@ function openCodeScreen() {
   $('seriesName').textContent = activeSeries || '';
   codeInput.value = '';
   output.innerHTML = '';
-  history.pushState({ screen: 'code' }, '');
   show('code');
   codeInput.focus();
 }
@@ -111,7 +112,12 @@ function renderResult() {
   const list = entriesForSelection();
   const exact = list.find(e => norm(e.code) === q);
 
-  if (exact) { renderDetail(exact); return; }
+  if (exact) {
+    renderDetail(exact);
+    const longerPossible = list.some(o => o !== exact && norm(o.code).startsWith(q));
+    if (!longerPossible) codeInput.blur();       // result shown -> close keyboard
+    return;
+  }
 
   const similar = list.filter(e => norm(e.code).startsWith(q));
   let html = '<p class="msg error">Code <b>' + esc(codeInput.value.trim()) +
@@ -124,7 +130,7 @@ function renderResult() {
   }
   output.innerHTML = html;
   output.querySelectorAll('.chip').forEach(ch =>
-    ch.addEventListener('click', () => { codeInput.value = ch.dataset.code; renderResult(); }));
+    ch.addEventListener('click', () => { codeInput.value = ch.dataset.code; renderResult(); codeInput.blur(); }));
 }
 
 function renderDetail(e) {
@@ -150,10 +156,17 @@ function renderDetail(e) {
   output.innerHTML = html;
 
   const more = $('moreBtn');
-  if (more) more.addEventListener('click', () => openViewer(e.image));
+  if (more) more.addEventListener('click', () => { codeInput.blur(); openViewer(e.image); });
 }
 
 codeInput.addEventListener('input', renderResult);
+
+/* ---------- keyboard: opens only when the search box is tapped ---------- */
+codeInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); codeInput.blur(); }   // Search key closes keyboard
+});
+codeInput.addEventListener('focus', () => document.body.classList.add('typing'));
+codeInput.addEventListener('blur',  () => document.body.classList.remove('typing'));
 
 /* ---------- flow chart viewer ---------- */
 let zoom = 200;
@@ -163,30 +176,26 @@ function openViewer(src) {
   applyZoom();
   viewerImg.src = src;
   viewer.hidden = false;
-  history.pushState({ screen: 'viewer' }, '');
 }
 function closeViewerUI() { viewer.hidden = true; viewerImg.removeAttribute('src'); }
 $('zoomIn').addEventListener('click',  () => { zoom = Math.min(500, zoom + 50); applyZoom(); });
 $('zoomOut').addEventListener('click', () => { zoom = Math.max(100, zoom - 50); applyZoom(); });
-$('viewerClose').addEventListener('click', () => history.back());
+$('viewerClose').addEventListener('click', () => goBack());
 
-/* ---------- navigation (Android back button) ---------- */
-$('backSeries').addEventListener('click', () => history.back());
-$('backCode').addEventListener('click',   () => history.back());
-
-window.addEventListener('popstate', e => {
-  const s = (e.state && e.state.screen) || 'brand';
-  if (s !== 'viewer') closeViewerUI();
-  if (s === 'brand') {
-    activeBrand = null; activeSeries = null;
-    show('brand');
-  } else if (s === 'series') {
-    activeSeries = null;
-    show('series');
-  } else if (s === 'code') {
-    show('code');
+/* ---------- back navigation (screen button + Android back button) ---------- */
+// Returns true if the app handled the back press, false if we are on the first screen.
+function goBack() {
+  if (!viewer.hidden) { closeViewerUI(); return true; }
+  if (current === 'code') {
+    if (activeSeries) { activeSeries = null; show('series'); }
+    else { activeBrand = null; show('brand'); }
+    return true;
   }
-});
+  if (current === 'series') { activeBrand = null; show('brand'); return true; }
+  return false;
+}
+window.handleAndroidBack = goBack;      // called from MainActivity.java
+$('bottomBack').addEventListener('click', goBack);
 
 /* ---------- remove old offline cache from earlier versions ---------- */
 if ('serviceWorker' in navigator) {
