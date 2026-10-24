@@ -102,30 +102,6 @@
     "check": "Check indoor coil thermistor"
   },
   {
-    "brand": "Mitsubishi Electric",
-    "code": "E5",
-    "meaning": "Indoor fan motor fault",
-    "check": "Check indoor fan motor & PCB"
-  },
-  {
-    "brand": "Mitsubishi Electric",
-    "code": "E6",
-    "meaning": "Indoor/outdoor communication error",
-    "check": "Check comm wiring, both PCBs"
-  },
-  {
-    "brand": "Mitsubishi Electric",
-    "code": "H6",
-    "meaning": "Outdoor fan motor fault",
-    "check": "Check outdoor fan motor & inverter PCB"
-  },
-  {
-    "brand": "Mitsubishi Electric",
-    "code": "F3",
-    "meaning": "Discharge pipe temperature sensor fault",
-    "check": "Check discharge sensor, refrigerant charge"
-  },
-  {
     "brand": "O'General",
     "code": "11",
     "meaning": "Indoor air thermistor error",
@@ -1094,5 +1070,454 @@
     "type": "Outdoor unit",
     "blinks": "19 blinks",
     "details": "Compressor, module PCB and reactor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E0",
+    "meaning": "Remote controller transmission error",
+    "details": "Remote control transmission error (signal receiving error)",
+    "cause": "During individual unit control: bad contact of transmission wire; signal transmitting/receiving circuits are abnormal"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E1",
+    "meaning": "Remote controller control board error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E2",
+    "meaning": "Remote controller control board error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E3",
+    "meaning": "Remote controller transmission error",
+    "details": "Remote control transmission error (transmitting error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E4",
+    "meaning": "Remote controller signal receiving error",
+    "details": "Remote control transmission error (signal receiving error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E5",
+    "meaning": "Remote control transmission error (transmitting error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E6",
+    "meaning": "Indoor/outdoor unit communication error",
+    "details": "Indoor/outdoor unit transmission error (signal receiving error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E7",
+    "meaning": "Indoor/outdoor unit communication error",
+    "details": "Indoor/outdoor unit transmission error (transmitting error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E8",
+    "meaning": "Indoor/outdoor unit transmission error (signal receiving error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "E9",
+    "meaning": "Indoor/outdoor unit communication error (Transmitting error) (Outdoor unit)",
+    "details": "Indoor/outdoor unit transmission error (transmitting error)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "EA",
+    "meaning": "Miswiring of indoor/outdoor unit, exceed the number of indoor unit connections"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "EB",
+    "meaning": "Miswiring of indoor/outdoor unit (miswiring disconnection)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "EC",
+    "meaning": "Start-up time over"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "ED",
+    "meaning": "Serial transmission error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "EE",
+    "meaning": "Communication error between indoor and outdoor units"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "EF",
+    "meaning": "M-NET transmission error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F1",
+    "meaning": "Reverse phase detection"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F2",
+    "meaning": "L3 open phase detection"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F3",
+    "meaning": "63L connector open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F4",
+    "meaning": "49C connector open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F7",
+    "meaning": "Reverse phase detection circuit (p.c.board) fault"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F8",
+    "meaning": "Input circuit fault"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "F9",
+    "meaning": "Connector 2 or more open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "FA",
+    "meaning": "L2-phased open phase or 51CM connector open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "Fb",
+    "meaning": "Indoor unit control system error (memory error, etc.)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P1",
+    "meaning": "Intake sensor error",
+    "details": "Abnormality of room temperature thermistor (TH1)",
+    "cause": "Bad contact with the thermistor; damaged thermistor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P2",
+    "meaning": "Pipe (Liquid or 2-phase pipe) sensor error",
+    "details": "Abnormality of pipe temperature thermistor/liquid (TH2)",
+    "cause": "Bad contact with the thermistor; damaged thermistor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P3",
+    "cause": "Bad contact of transmission wire; signal transmitting/receiving circuits are abnormal; wrong operation due to noise wave emitted by other appliances"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P4",
+    "meaning": "Drain sensor error",
+    "details": "Abnormality of drain sensor (DS)",
+    "cause": "Bad contact of transmission wire; damaged thermistor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P5",
+    "meaning": "Drain pump error",
+    "details": "Malfunction of drain-up machine",
+    "cause": "Malfunction of the drain pump; damaged drain sensor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P6",
+    "meaning": "Freezing/Overheating safeguard operation",
+    "details": "Freezing/overheating protection detect",
+    "cause": "Short cycle of air cycle; dirty air filter; damaged fan; abnormal refrigerant"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P7",
+    "cause": "Wrong address-setting; signal transmitting/receiving circuit of the remote controller is abnormal; wrong SW6-setting"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P8",
+    "meaning": "Pipe temperature error",
+    "details": "Abnormality of pipe temperature",
+    "cause": "Wrong wiring of indoor/outdoor connecting wire; reversed phase; the protection device is working; damaged outdoor coil thermistor"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "P9",
+    "meaning": "Pipe (Liquid or 2-phase pipe) sensor error",
+    "details": "Anomality of pipe temperature thermistor/condenser/evaporator (TH5)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "PA",
+    "meaning": "Forced compressor error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U1",
+    "meaning": "Abnormal high pressure (63H worked)/Overheating safeguard operation",
+    "details": "Abnormal high pressure (high pressure switch 63H worked); Direct cut operation"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U2",
+    "meaning": "Abnormal high discharging temperature/49C worked/insufficient refrigerant",
+    "details": "Abnormal high discharging temperature; Inner thermostat (49C) operation"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U3",
+    "meaning": "Open/short of outdoor unit thermistors",
+    "details": "Discharge thermistor short/open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U4",
+    "meaning": "Open/short of outdoor unit thermistors",
+    "details": "Outdoor thermistor short/open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U5",
+    "meaning": "Abnormal temperature of heat sink"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U6",
+    "meaning": "Compressor overcurrent interruption/Abnormal of power module",
+    "details": "Compressor over current (overload) cut off"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U7",
+    "meaning": "Abnormality of superheat due to low discharge temperature"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U8",
+    "meaning": "Outdoor unit fan safeguard stop"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "U9",
+    "meaning": "Abnormality such as overvoltage or voltage shortage and abnormal synchronous signal to the main circuit / Current sensor error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UA",
+    "meaning": "Compressor over current (terminal relay operation)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "Ud",
+    "meaning": "Abnormal high pressure (63H worked)/Overheating safeguard operation",
+    "details": "Overheat protection"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UE",
+    "meaning": "High pressure error (ball valve closed)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UF",
+    "meaning": "Compressor overcurrent interruption (When compressor locked)",
+    "details": "Compressor over current (start-up locked) cut off; Compressor over current (operating locked) cut off"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UH",
+    "meaning": "Current sensor error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UL",
+    "meaning": "Abnormal low pressure"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Letter codes",
+    "code": "UP",
+    "meaning": "Compressor overcurrent interruption"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "E0",
+    "meaning": "Diagnosis of malfunction: Transmitting/receiving signal error"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P1",
+    "meaning": "Diagnosis of malfunction: Intake air sensor abnormal"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P2",
+    "meaning": "Diagnosis of malfunction: Pipe sensor abnormal"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P3",
+    "meaning": "Diagnosis of malfunction: System error (transmitting/receiving signal)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P4",
+    "meaning": "Diagnosis of malfunction: Drain sensor abnormal"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P5",
+    "meaning": "Diagnosis of malfunction: Malfunctioning of the drain overflow protecting mechanism"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P6",
+    "meaning": "Diagnosis of malfunction: Abnormality of the coil frost/overheating protection mode"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P7",
+    "meaning": "Diagnosis of malfunction: System error (address)"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "Mr.Slim K-control LED",
+    "code": "P8",
+    "meaning": "Diagnosis of malfunction: Outdoor unit malfunction"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LED ON",
+    "meaning": "Operation status",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LED Flash",
+    "meaning": "Check code display",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD1",
+    "meaning": "LED ON: Compressor directive. LED Flash: Reverse phase detect"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD2",
+    "meaning": "LED ON: Heating directive. LED Flash: Open phase detect"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD3",
+    "meaning": "LED ON: During 63H1 operation. LED Flash: Pipe sensor short/open"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD4",
+    "meaning": "LED ON: Compressor ON. LED Flash: High pressure switch (63H2) operation"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD5",
+    "meaning": "LED ON: Outdoor fan ON. LED Flash: Over current relay (51CM) operation"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD6",
+    "meaning": "LED ON: 4-way valve ON. LED Flash: Thermal switch (26C) operation"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD7",
+    "meaning": "LED ON: Bypass valve ON. LED Flash: Thermistor (TH3) overheat protection"
+  },
+  {
+    "brand": "Mitsubishi Electric",
+    "series": "PUH-EK outdoor LED",
+    "code": "LD8",
+    "meaning": "LED ON: Crankcase heater ON. LED Flash: Defective input"
   }
 ]
