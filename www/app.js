@@ -110,11 +110,11 @@ function renderResult() {
   if (!q) { output.innerHTML = ''; return; }
 
   const list = entriesForSelection();
-  const exact = list.find(e => norm(e.code) === q);
+  const matches = list.filter(e => norm(e.code) === q);
 
-  if (exact) {
-    renderDetail(exact);
-    const longerPossible = list.some(o => o !== exact && norm(o.code).startsWith(q));
+  if (matches.length) {
+    renderDetails(matches);
+    const longerPossible = list.some(o => norm(o.code) !== q && norm(o.code).startsWith(q));
     if (!longerPossible) codeInput.blur();       // result shown -> close keyboard
     return;
   }
@@ -133,30 +133,35 @@ function renderResult() {
     ch.addEventListener('click', () => { codeInput.value = ch.dataset.code; renderResult(); codeInput.blur(); }));
 }
 
-function renderDetail(e) {
+function cardHtml(e, idx) {
+  const badges = [e.type, e.blinks, e.reset].filter(Boolean);
   let html = '<div class="detail-card"><div class="badges">' +
     '<span class="big-code">' + esc(e.code) + '</span>' +
-    (e.reset ? '<span class="reset-badge">' + esc(e.reset) + '</span>' : '') +
-    '</div>' +
-    '<p class="label">Meaning</p><p class="value">' + esc(e.meaning) + '</p>';
+    badges.map(b => '<span class="reset-badge">' + esc(b) + '</span>').join('') +
+    '</div>';
 
-  if (e.cause) html += '<p class="label">Cause</p><p class="value">' + esc(e.cause) + '</p>';
+  if (e.meaning) html += '<p class="label">Meaning</p><p class="value">' + esc(e.meaning) + '</p>';
+  if (e.details) html += '<p class="label">Details</p><p class="value">' + esc(e.details) + '</p>';
+  if (e.cause)   html += '<p class="label">Cause</p><p class="value">' + esc(e.cause) + '</p>';
 
-  html += '<p class="label">What to check</p>';
+  // "What to check" only when there is something to show
   if (Array.isArray(e.steps) && e.steps.length) {
-    html += '<ol class="steps">' + e.steps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ol>';
-  } else {
-    html += '<p class="value">' + esc(e.check || '') + '</p>';
+    html += '<p class="label">What to check</p><ol class="steps">' +
+      e.steps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ol>';
+  } else if (e.check) {
+    html += '<p class="label">What to check</p><p class="value">' + esc(e.check) + '</p>';
   }
 
   if (e.image) {
-    html += '<button type="button" class="more-btn" id="moreBtn">More details (flow chart)</button>';
+    html += '<button type="button" class="more-btn" data-image="' + esc(e.image) + '">More details (flow chart)</button>';
   }
-  html += '</div>';
-  output.innerHTML = html;
+  return html + '</div>';
+}
 
-  const more = $('moreBtn');
-  if (more) more.addEventListener('click', () => { codeInput.blur(); openViewer(e.image); });
+function renderDetails(entries) {
+  output.innerHTML = entries.map(cardHtml).join('<div class="card-gap"></div>');
+  output.querySelectorAll('.more-btn').forEach(btn =>
+    btn.addEventListener('click', () => { codeInput.blur(); openViewer(btn.dataset.image); }));
 }
 
 codeInput.addEventListener('input', renderResult);

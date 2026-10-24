@@ -42,114 +42,6 @@
     "check": "Leak test with nitrogen, vacuum, recharge refrigerant"
   },
   {
-    "brand": "Daikin",
-    "code": "U0",
-    "meaning": "Refrigerant shortage or piping blocked",
-    "check": "Leak test, measure operating pressures, check expansion valve"
-  },
-  {
-    "brand": "Daikin",
-    "code": "U2",
-    "meaning": "Power supply abnormality / faulty wiring",
-    "check": "Check supply voltage, terminal connections, inverter PCB"
-  },
-  {
-    "brand": "Daikin",
-    "code": "U4",
-    "meaning": "Indoor/outdoor unit communication failure",
-    "check": "Check transmission wiring, indoor & outdoor PCBs"
-  },
-  {
-    "brand": "Daikin",
-    "code": "E3",
-    "meaning": "High pressure switch has operated",
-    "check": "Clean condenser, check outdoor fan, check refrigerant charge"
-  },
-  {
-    "brand": "Daikin",
-    "code": "H6",
-    "meaning": "Compressor operation halt / no feedback",
-    "check": "Check compressor, inverter board, wiring harness"
-  },
-  {
-    "brand": "Daikin",
-    "code": "A1",
-    "meaning": "Indoor PCB defect",
-    "check": "Replace indoor PCB after checking wiring"
-  },
-  {
-    "brand": "LG",
-    "code": "CH01",
-    "meaning": "Indoor air temperature sensor error",
-    "check": "Check sensor resistance & connector; replace sensor"
-  },
-  {
-    "brand": "LG",
-    "code": "CH02",
-    "meaning": "Indoor coil (pipe) sensor error",
-    "check": "Check indoor coil sensor, wiring"
-  },
-  {
-    "brand": "LG",
-    "code": "CH05",
-    "meaning": "Indoor/outdoor communication error",
-    "check": "Check communication cable & connectors, both PCBs"
-  },
-  {
-    "brand": "LG",
-    "code": "CH10",
-    "meaning": "Outdoor coil sensor error",
-    "check": "Check outdoor pipe sensor & wiring"
-  },
-  {
-    "brand": "LG",
-    "code": "CH21",
-    "meaning": "Compressor overcurrent",
-    "check": "Check compressor winding, IPM module, supply voltage"
-  },
-  {
-    "brand": "LG",
-    "code": "CH38",
-    "meaning": "Wrong indoor/outdoor capacity combination",
-    "check": "Verify matched indoor & outdoor models"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E101",
-    "meaning": "Indoor air sensor open/short",
-    "check": "Check indoor air thermistor & connector"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E102",
-    "meaning": "Indoor pipe sensor error",
-    "check": "Check indoor pipe thermistor & harness"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E121",
-    "meaning": "Indoor fan motor error",
-    "check": "Check fan motor, hall IC, indoor PCB"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E201",
-    "meaning": "Communication error between units",
-    "check": "Check comm wiring, outdoor power PCB"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E421",
-    "meaning": "Outdoor pipe sensor error",
-    "check": "Check outdoor pipe thermistor & wiring"
-  },
-  {
-    "brand": "Samsung",
-    "code": "E444",
-    "meaning": "High pressure error",
-    "check": "Clean condenser, check outdoor fan & refrigerant"
-  },
-  {
     "brand": "Carrier",
     "code": "E1",
     "meaning": "Room temperature sensor error",
@@ -208,42 +100,6 @@
     "code": "12",
     "meaning": "Indoor coil sensor alarm",
     "check": "Check indoor coil thermistor"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F1",
-    "meaning": "Indoor ambient sensor error",
-    "check": "Check & replace indoor sensor"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F2",
-    "meaning": "Indoor coil sensor error",
-    "check": "Check coil sensor & harness"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F3",
-    "meaning": "Outdoor sensor error",
-    "check": "Check outdoor sensor & wiring"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F5",
-    "meaning": "Communication error",
-    "check": "Check comm wiring & both PCBs"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F6",
-    "meaning": "IPM module fault",
-    "check": "Check IPM module, compressor, supply voltage"
-  },
-  {
-    "brand": "Whirlpool",
-    "code": "F8",
-    "meaning": "Overcurrent protection",
-    "check": "Check compressor load, voltage stability"
   },
   {
     "brand": "Mitsubishi Electric",
@@ -785,5 +641,458 @@
       "The chart gives no check steps for this code. The warning appears when the IDU fan motor run hours pass the filter cleaning warning set value."
     ],
     "image": "images/bluestar-dsai/page-10.png"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "00",
+    "meaning": "Normal",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "U0",
+    "meaning": "Refrigerant shortage"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "U2",
+    "meaning": "Overvoltage detection"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "U3",
+    "meaning": "Malfunction of transmission"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "U4",
+    "meaning": "Signal transmission error (indoor/outdoor)"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "A1",
+    "meaning": "Indoor unit PCB abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "A5",
+    "meaning": "Freeze-up protection or high-pressure control"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "A6",
+    "meaning": "Fan motor (DC) abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "C4",
+    "meaning": "Indoor heat exchanger thermistor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "C9",
+    "meaning": "Room temperature thermistor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "EA",
+    "meaning": "4-way valve abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "E1",
+    "meaning": "Outdoor unit PCB abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "E3",
+    "meaning": "Actuation of high pressure switch (HPS)"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "E5",
+    "meaning": "Overload activation (compressor overload)"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "E6",
+    "meaning": "Compressor lock"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "E7",
+    "meaning": "DC fan lock"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "F3",
+    "meaning": "Discharge pipe temperature control"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "H3",
+    "meaning": "Malfunction of high pressure switch (HPS)"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "H6",
+    "meaning": "Position sensor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "H8",
+    "meaning": "DC voltage / current sensor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "H9",
+    "meaning": "Outdoor temperature thermistor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "J3",
+    "meaning": "Discharge pipe thermistor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "J6",
+    "meaning": "Outdoor heat exchanger thermistor abnormality"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "L4",
+    "meaning": "Radiation fin temperature rise"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "L5",
+    "meaning": "Inverter instantaneous overcurrent (DC)"
+  },
+  {
+    "brand": "Daikin",
+    "series": "FTXTM-A",
+    "code": "P4",
+    "meaning": "Radiation fin thermistor abnormality"
+  },
+  {
+    "brand": "Samsung",
+    "code": "CF",
+    "meaning": "Filter cleaning needed",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Samsung",
+    "code": "C1",
+    "meaning": "Automatic cleaning in progress",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Samsung",
+    "code": "dF",
+    "meaning": "Automatic defrost",
+    "type": "Info, not a fault"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E1/21",
+    "meaning": "Temperature sensor failure"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E1/22",
+    "meaning": "Temperature sensor failure"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E1/54",
+    "meaning": "Fan motor or condenser problem"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E1/63",
+    "meaning": "Board memory (EEPROM) defect"
+  },
+  {
+    "brand": "Samsung",
+    "code": "C4/22",
+    "meaning": "Refrigerant gas failure or shortage"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E5",
+    "meaning": "Short circuit or fault in internal/external sensors"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E6",
+    "meaning": "Short circuit or fault in internal/external sensors"
+  },
+  {
+    "brand": "Samsung",
+    "code": "E7",
+    "meaning": "Short circuit or fault in internal/external sensors"
+  },
+  {
+    "brand": "LG",
+    "code": "04",
+    "meaning": "Drainage failure / full water detection"
+  },
+  {
+    "brand": "LG",
+    "code": "CH04",
+    "meaning": "Drainage failure / full water detection"
+  },
+  {
+    "brand": "LG",
+    "code": "FL",
+    "meaning": "Drainage failure / full water detection"
+  },
+  {
+    "brand": "LG",
+    "code": "05",
+    "meaning": "Communication error"
+  },
+  {
+    "brand": "LG",
+    "code": "E0",
+    "meaning": "Communication error"
+  },
+  {
+    "brand": "LG",
+    "code": "CH53",
+    "meaning": "Communication error"
+  },
+  {
+    "brand": "LG",
+    "code": "07",
+    "meaning": "Simultaneous cooling/heating operation error"
+  },
+  {
+    "brand": "LG",
+    "code": "38",
+    "meaning": "Refrigerant shortage, sensor failure"
+  },
+  {
+    "brand": "LG",
+    "code": "F4",
+    "meaning": "Refrigerant shortage, sensor failure"
+  },
+  {
+    "brand": "LG",
+    "code": "54",
+    "meaning": "RST reverse phase detection"
+  },
+  {
+    "brand": "LG",
+    "code": "66",
+    "meaning": "Wrong wiring / wrong piping"
+  },
+  {
+    "brand": "LG",
+    "code": "10",
+    "meaning": "Indoor fan locked"
+  },
+  {
+    "brand": "LG",
+    "code": "E6",
+    "meaning": "Indoor fan locked"
+  },
+  {
+    "brand": "LG",
+    "code": "67",
+    "meaning": "Outdoor fan locked"
+  },
+  {
+    "brand": "LG",
+    "code": "EF",
+    "meaning": "Outdoor fan locked"
+  },
+  {
+    "brand": "LG",
+    "code": "90",
+    "meaning": "Test run stand / wall-mount refrigerant flow defect"
+  },
+  {
+    "brand": "LG",
+    "code": "91",
+    "meaning": "Test run stand / wall-mount refrigerant flow defect"
+  },
+  {
+    "brand": "LG",
+    "code": "F4",
+    "meaning": "Test run stand / wall-mount refrigerant flow defect"
+  },
+  {
+    "brand": "LG",
+    "code": "93",
+    "meaning": "Outdoor unit no power"
+  },
+  {
+    "brand": "LG",
+    "code": "237",
+    "meaning": "Communication error"
+  },
+  {
+    "brand": "LG",
+    "code": "238",
+    "meaning": "Communication error"
+  },
+  {
+    "brand": "Haier",
+    "code": "E1",
+    "type": "Indoor unit",
+    "blinks": "No blink",
+    "details": "Check sensor value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "E2",
+    "type": "Indoor unit",
+    "blinks": "No blink",
+    "details": "Check sensor value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "E4",
+    "type": "Indoor unit",
+    "blinks": "No blink",
+    "details": "Check and replace the IDU PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "E7",
+    "type": "Indoor unit",
+    "blinks": "15 blinks",
+    "details": "Check with E7 JIG IDU and ODU"
+  },
+  {
+    "brand": "Haier",
+    "code": "E14",
+    "type": "Indoor unit",
+    "blinks": "No blink",
+    "details": "Check BLDC fan motor ohms value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F1",
+    "type": "Outdoor unit",
+    "blinks": "2 blinks",
+    "details": "Check module PCB, compressor ohms value, gas leak"
+  },
+  {
+    "brand": "Haier",
+    "code": "F3",
+    "type": "Outdoor unit",
+    "blinks": "4 blinks",
+    "details": "Communication failure between power module and main PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F4",
+    "type": "Outdoor unit",
+    "blinks": "8 blinks",
+    "details": "Check short of gas, condenser block or ODU fan motor speed"
+  },
+  {
+    "brand": "Haier",
+    "code": "F6",
+    "type": "Outdoor unit",
+    "blinks": "12 blinks",
+    "details": "Check sensor value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F7",
+    "type": "Outdoor unit",
+    "blinks": "11 blinks",
+    "details": "Check sensor value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F8",
+    "type": "Outdoor unit",
+    "blinks": "9 blinks",
+    "details": "Check BLDC fan motor ohms value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F11",
+    "type": "Outdoor unit",
+    "blinks": "18 blinks",
+    "details": "ODU PCB and compressor need to be checked"
+  },
+  {
+    "brand": "Haier",
+    "code": "F12",
+    "type": "Outdoor unit",
+    "blinks": "1 blink",
+    "details": "Check and replace ODU PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F19",
+    "type": "Outdoor unit",
+    "blinks": "6 blinks",
+    "details": "Check voltage low, high or fluctuation"
+  },
+  {
+    "brand": "Haier",
+    "code": "F20",
+    "type": "Outdoor unit",
+    "blinks": "5 blinks",
+    "details": "Check module PCB, compressor and system pressure"
+  },
+  {
+    "brand": "Haier",
+    "code": "F22",
+    "type": "Outdoor unit",
+    "blinks": "3 blinks",
+    "details": "Check compressor ohms value and ground"
+  },
+  {
+    "brand": "Haier",
+    "code": "F25",
+    "type": "Outdoor unit",
+    "blinks": "13 blinks",
+    "details": "Check sensor value and voltage in PCB"
+  },
+  {
+    "brand": "Haier",
+    "code": "F27",
+    "type": "Outdoor unit",
+    "blinks": "7 blinks",
+    "details": "Compressor internal lock / block"
+  },
+  {
+    "brand": "Haier",
+    "code": "F28",
+    "type": "Outdoor unit",
+    "blinks": "19 blinks",
+    "details": "Compressor, module PCB and reactor"
   }
 ]

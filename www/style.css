@@ -280,3 +280,5 @@ body.typing .bottom-bar { display: none; }   /* hide while keyboard is open */
 }
 .viewer-scroll img { display: block; width: 200%; max-width: none; height: auto; }
 
+
+.card-gap { height: 14px; }
