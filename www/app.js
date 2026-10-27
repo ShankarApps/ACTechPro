@@ -22,6 +22,8 @@ function esc(s) {
 }
 // "e-1", "E 1", "e1" all become "E1"
 function norm(s) { return String(s).toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+// all codes an entry answers to: main code + alternate codes (aliases)
+function codesOf(e) { return [e.code].concat(e.aliases || []).map(norm); }
 
 function seriesOf(brand) {
   return [...new Set(DB.filter(e => e.brand === brand && e.series).map(e => e.series))];
@@ -110,16 +112,16 @@ function renderResult() {
   if (!q) { output.innerHTML = ''; return; }
 
   const list = entriesForSelection();
-  const matches = list.filter(e => norm(e.code) === q);
+  const matches = list.filter(e => codesOf(e).includes(q));
 
   if (matches.length) {
     renderDetails(matches);
-    const longerPossible = list.some(o => norm(o.code) !== q && norm(o.code).startsWith(q));
+    const longerPossible = list.some(o => !codesOf(o).includes(q) && codesOf(o).some(c => c.startsWith(q)));
     if (!longerPossible) codeInput.blur();       // result shown -> close keyboard
     return;
   }
 
-  const similar = list.filter(e => norm(e.code).startsWith(q));
+  const similar = list.filter(e => codesOf(e).some(c => c.startsWith(q)));
   let html = '<p class="msg error">Code <b>' + esc(codeInput.value.trim()) +
              '</b> not found for ' + esc(activeBrand) +
              (activeSeries ? ' (' + esc(activeSeries) + ')' : '') + '.</p>';
@@ -134,7 +136,8 @@ function renderResult() {
 }
 
 function cardHtml(e, idx) {
-  const badges = [e.type, e.blinks, e.reset].filter(Boolean);
+  const also = (e.aliases && e.aliases.length) ? 'Also: ' + e.aliases.join(' \u00b7 ') : '';
+  const badges = [e.type, e.blinks, e.reset, also].filter(Boolean);
   let html = '<div class="detail-card"><div class="badges">' +
     '<span class="big-code">' + esc(e.code) + '</span>' +
     badges.map(b => '<span class="reset-badge">' + esc(b) + '</span>').join('') +
@@ -150,6 +153,10 @@ function cardHtml(e, idx) {
       e.steps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ol>';
   } else if (e.check) {
     html += '<p class="label">What to check</p><p class="value">' + esc(e.check) + '</p>';
+  }
+
+  if (e.note) {
+    html += '<div class="note-box"><p class="label">Technician note</p><p class="value">' + esc(e.note) + '</p></div>';
   }
 
   if (e.image) {
