@@ -1,0 +1,36 @@
+/* AC Tech Pro: Home tab + bottom tab bar */
+:root{--tabh:calc(60px + var(--safe-bottom))}
+.tab-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;height:var(--tabh);padding-bottom:var(--safe-bottom);background:var(--bg);border-top:1px solid var(--border)}
+.tab-bar button{flex:1;min-width:0;background:none;color:var(--muted);font-size:.72rem;font-weight:700;padding:0 2px}
+.tab-bar button.on{color:var(--accent);box-shadow:inset 0 3px var(--accent)}
+body.typing .tab-bar{display:none}
+.bottom-bar{bottom:var(--tabh);padding-bottom:10px}
+body.typing .bottom-bar{display:none}
+.app-main{padding-bottom:calc(var(--tabh) + 110px)}
+.home-bar{display:flex;gap:12px;margin-bottom:12px}
+.home-btn{flex:1;min-height:48px;border-radius:24px;border:2px solid var(--accent);background:var(--accent-soft);color:var(--text);font-size:1rem;font-weight:800}
+.home-btn.sec{border-color:var(--border);background:var(--surface)}
+.home-btn:active{filter:brightness(.85)}
+.home-svg{display:block;width:100%;height:auto;max-height:calc(100vh - 260px)}
+.lb{transition:opacity .5s}
+.p .lb{opacity:0}
+.fl{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-dasharray:.1 11;opacity:0;animation:fw .7s linear infinite;animation-play-state:paused}
+.fl.on{opacity:1}
+.p .fl,.p .spin1,.p .spin2,.p #cp,.p .m{animation-play-state:running}
+@keyframes fw{to{stroke-dashoffset:-22}}
+@keyframes sp{to{transform:rotate(360deg)}}
+.spin1{transform-origin:262px 475px;animation:sp .8s linear infinite;animation-play-state:paused}
+.spin2{transform-origin:240px 61px;animation:sp .45s linear infinite;animation-play-state:paused}
+svg:not(.s2) .spin2{animation:none}
+#cp{transform-box:fill-box;transform-origin:center;animation:pl .7s ease-in-out infinite alternate;animation-play-state:paused}
+@keyframes pl{to{transform:scale(1.04)}}
+#ev.on rect{filter:drop-shadow(0 0 6px #4cf)}
+#vp.on{animation:vb .6s 2}
+@keyframes vb{50%{filter:drop-shadow(0 0 8px #fc3)}}
+#lv{transform-box:fill-box;transform-origin:50% 0;transition:transform 1.2s}
+.s2 #lv{transform:scaleY(3)}
+#ms{opacity:0;transition:opacity 1.5s}
+.s2 #ms{opacity:1}
+.soft #ms{opacity:.55}
+.m{transform-box:fill-box;transform-origin:center;animation:ms 2.2s linear infinite;animation-play-state:paused}
+@keyframes ms{0%{transform:translateY(0) scale(.8);opacity:.9}100%{transform:translateY(64px) scale(1.7);opacity:0}}

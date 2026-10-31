@@ -10,6 +10,7 @@
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
 
@@ -23,7 +24,7 @@
     </div>
   </header>
 
-  <main class="app-main">
+  <main class="app-main" id="tabError">
 
     <!-- Screen 1: brand -->
     <section id="screenBrand">
@@ -55,6 +56,48 @@
     </p>
   </main>
 
+  <main class="app-main" id="tabHome" hidden>
+    <h2 class="section-title">How an AC works</h2>
+    <div class="home-bar"><button id="homePlay" class="home-btn" type="button">&#9654; Play</button><button id="homeRestart" class="home-btn sec" type="button">&#8635; Restart</button></div>
+    <svg id="acSvg" class="home-svg" viewBox="0 0 360 590" role="img" aria-label="Animated refrigeration cycle of a split AC">
+<defs>
+<linearGradient id="gu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1f5fa"/><stop offset="1" stop-color="#b9c4d2"/></linearGradient>
+<linearGradient id="gc" x1="0" x2="1"><stop offset="0" stop-color="#14306e"/><stop offset=".5" stop-color="#3b6fd8"/><stop offset="1" stop-color="#0c1c44"/></linearGradient>
+<radialGradient id="mg"><stop offset="0" stop-color="#9fe8ff" stop-opacity=".9"/><stop offset="1" stop-color="#9fe8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="60" y="10" width="240" height="108" rx="16" fill="url(#gu)"/>
+<rect x="72" y="30" width="216" height="62" rx="8" fill="#0b1524"/>
+<g id="ev"><rect x="78" y="36" width="116" height="50" rx="4" fill="#1d5fd6"/><path d="M82 61H190" stroke="#8fd0ff" stroke-width="50" stroke-dasharray="2 6" opacity=".6"/></g>
+<circle cx="240" cy="61" r="26" fill="#1a2535" stroke="#6b7a90"/>
+<path class="spin2" d="M240 61L260 61M240 61L250 78M240 61L230 78M240 61L220 61M240 61L230 44M240 61L250 44" stroke="#9fb0c8" stroke-width="5" stroke-linecap="round"/>
+<rect id="lv" x="86" y="110" width="188" height="6" rx="3" fill="#cfd8e4"/>
+<g id="ms"><ellipse class="m" cx="110" cy="136" rx="24" ry="10" fill="url(#mg)"/><ellipse class="m" cx="150" cy="140" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-.6s"/><ellipse class="m" cx="190" cy="136" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-1.2s"/><ellipse class="m" cx="230" cy="140" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-1.8s"/><ellipse class="m" cx="270" cy="136" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-.3s"/></g>
+<rect x="50" y="380" width="260" height="196" rx="14" fill="url(#gu)"/>
+<rect x="60" y="392" width="240" height="172" rx="8" fill="#0b1524"/>
+<rect x="134" y="404" width="76" height="116" rx="4" fill="#2a1410"/>
+<circle cx="262" cy="475" r="46" fill="#1a2535" stroke="#6b7a90" stroke-width="2"/>
+<g class="spin1" fill="#9fb0c8"><path d="M262 475q10-20 2-40q-16 14-2 40z"/><path d="M262 475q10-20 2-40q-16 14-2 40z" transform="rotate(72 262 475)"/><path d="M262 475q10-20 2-40q-16 14-2 40z" transform="rotate(144 262 475)"/><path d="M262 475q10-20 2-40q-16 14-2 40z" transform="rotate(216 262 475)"/><path d="M262 475q10-20 2-40q-16 14-2 40z" transform="rotate(288 262 475)"/></g>
+<circle cx="262" cy="475" r="7" fill="#5b6b82"/>
+<rect id="cp" x="66" y="418" width="56" height="116" rx="24" fill="url(#gc)"/>
+<g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<path d="M78 60H28V500H66" stroke="#2f7bff"/>
+<path d="M122 500H138" stroke="#ef2b2b"/>
+<path d="M138 500H198V482H138V464H198V446H138V428H198V410" stroke="#ff5a1f"/>
+<path d="M198 410V395H330V236" stroke="#ffa21a"/>
+<path d="M330 214V22H150V38" stroke="#5cc8ff"/>
+</g>
+<path id="f1" class="fl" d="M122 500H138"/>
+<path id="f2" class="fl" d="M138 500H198V482H138V464H198V446H138V428H198V410"/>
+<path id="f3" class="fl" d="M198 410V395H330V236"/>
+<path id="f4" class="fl" d="M330 214V22H150V38"/>
+<path id="f5" class="fl" d="M78 60H28V500H66"/>
+<g id="vp"><rect x="322" y="214" width="16" height="22" rx="3" fill="#d4a017"/><rect x="318" y="221" width="24" height="8" rx="3" fill="#f2c94c"/></g>
+<g class="lb" id="lb"></g>
+</svg>
+  </main>
+  <main class="app-main" id="tabCalc" hidden><h2 class="section-title">HVAC Calculators</h2><p class="msg">Coming soon.</p></main>
+  <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><p class="msg">Coming soon.</p></main>
+
   <!-- Bottom back bar (series and code screens) -->
   <nav id="bottomBar" class="bottom-bar" hidden>
     <button id="bottomBack" class="bottom-back" type="button">&#128281; Back</button>
@@ -71,6 +114,14 @@
     </div>
   </div>
 
+  <nav id="tabBar" class="tab-bar" aria-label="Main tabs">
+    <button type="button" data-tab="home">Home</button>
+    <button type="button" data-tab="error" class="on" aria-current="page">Error Codes</button>
+    <button type="button" data-tab="calc">HVAC Calculators</button>
+    <button type="button" data-tab="settings">Settings</button>
+  </nav>
+
   <script src="app.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>

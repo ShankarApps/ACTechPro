@@ -204,6 +204,7 @@ function goBack() {
     return true;
   }
   if (current === 'series') { activeBrand = null; show('brand'); return true; }
+  if (currentTab !== 'home') { setTab('home'); return true; }   // other tabs: Back goes to Home
   return false;
 }
 window.handleAndroidBack = goBack;      // called from MainActivity.java
@@ -217,5 +218,23 @@ if ('serviceWorker' in navigator) {
 if (window.caches) {
   caches.keys().then(ks => ks.forEach(k => caches.delete(k))).catch(() => {});
 }
+
+/* ---------- bottom tabs: Home | Error Codes | HVAC Calculators | Settings ---------- */
+let currentTab = 'error';
+const tabs = { home: $('tabHome'), error: $('tabError'), calc: $('tabCalc'), settings: $('tabSettings') };
+function setTab(t) {
+  if (t !== 'home' && window.homeStop) window.homeStop();   // leaving Home stops the animation
+  currentTab = t;
+  Object.keys(tabs).forEach(k => { tabs[k].hidden = k !== t; });
+  document.querySelectorAll('#tabBar button').forEach(b => {
+    const on = b.dataset.tab === t;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-current', on ? 'page' : 'false');
+  });
+  $('bottomBar').hidden = t !== 'error' || current === 'brand';
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('#tabBar button').forEach(b =>
+  b.addEventListener('click', () => { if (!viewer.hidden) closeViewerUI(); setTab(b.dataset.tab); }));
 
 loadDB();
