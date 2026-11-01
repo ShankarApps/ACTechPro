@@ -1,11 +1,11 @@
 /* AC Tech Pro: Home tab animation (offline, no libraries) */
 (function(){
 var svg=document.getElementById('acSvg'),pp=document.getElementById('homePlay'),rs=document.getElementById('homeRestart'),NS='http://www.w3.org/2000/svg';
-var L=[['Evaporator Coil',136,61],['Blower',240,61],['Cold Liquid',282,150],['Expansion Valve',258,225],['Warm Liquid',272,300],['Cold Gas',66,250],['Hot Gas',130,550],['Compressor',94,470],['Condenser Coil',170,455],['Condenser Fan',262,530],['INDOOR UNIT',180,134],['OUTDOOR UNIT',180,368]];
+var L=[['Evaporator Coil',131,50],['Blower',250,49],['INDOOR UNIT',180,122],['Cold Liquid',272,150],['Expansion Valve',250,222],['Warm Liquid',275,290],['Cold Gas',74,260],['OUTDOOR UNIT',180,346],['Compressor',88,413],['Hot Gas',136,546],['Condenser Coil',192,462],['Condenser Fan',274,526]];
 var g=document.getElementById('lb');
-L.forEach(function(a){var w=a[0].length*6.4+14,r=document.createElementNS(NS,'rect'),t=document.createElementNS(NS,'text');
-r.setAttribute('x',a[1]-w/2);r.setAttribute('y',a[2]-11);r.setAttribute('width',w);r.setAttribute('height',22);r.setAttribute('rx',8);r.setAttribute('fill','#062a33');r.setAttribute('stroke','#22d3ee');
-t.setAttribute('x',a[1]);t.setAttribute('y',a[2]+4);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','12');t.setAttribute('fill','#e6faff');t.setAttribute('font-weight','700');t.textContent=a[0];
+L.forEach(function(a){var w=a[0].length*6+12,r=document.createElementNS(NS,'rect'),t=document.createElementNS(NS,'text');
+r.setAttribute('x',a[1]-w/2);r.setAttribute('y',a[2]-10);r.setAttribute('width',w);r.setAttribute('height',20);r.setAttribute('rx',8);r.setAttribute('fill','#062a33');r.setAttribute('stroke','#22d3ee');
+t.setAttribute('x',a[1]);t.setAttribute('y',a[2]+4);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','11');t.setAttribute('fill','#e6faff');t.setAttribute('font-weight','700');t.textContent=a[0];
 g.appendChild(r);g.appendChild(t);});
 function on(id){return function(){document.getElementById(id).classList.add('on');};}
 var ev=[[0,on('f1')],[.5,on('f2')],[2,on('f3')],[3.2,on('vp')],[3.6,on('f4')],[4.6,on('ev')],[5.4,on('f5')],[8.4,function(){svg.classList.add('s2');}],[12.5,function(){svg.classList.add('soft');}]];

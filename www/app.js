@@ -225,6 +225,7 @@ const tabs = { home: $('tabHome'), error: $('tabError'), calc: $('tabCalc'), set
 function setTab(t) {
   if (t !== 'home' && window.homeStop) window.homeStop();   // leaving Home stops the animation
   currentTab = t;
+  document.body.classList.toggle('home-tab', t === 'home');   // compact header + fixed layout on Home
   Object.keys(tabs).forEach(k => { tabs[k].hidden = k !== t; });
   document.querySelectorAll('#tabBar button').forEach(b => {
     const on = b.dataset.tab === t;
