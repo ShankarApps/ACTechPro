@@ -40,14 +40,14 @@ body.home-tab .app-header p{display:none}
 @keyframes af{to{stroke-dashoffset:-232}}
 .m{transform-box:fill-box;transform-origin:center;animation:ms 2.2s linear infinite}
 @keyframes ms{0%{transform:translateY(0) scale(.8);opacity:.9}100%{transform:translateY(240px) scale(1.7);opacity:0}}
-.rm{position:absolute;right:14%;top:50%;width:44px;height:120px;margin-top:-60px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 4px;border-radius:14px;background:linear-gradient(#f4f7fb,#c9d3df);box-shadow:0 2px 8px #0009;opacity:.72;transform-origin:right center;transition:transform .3s,opacity .3s;z-index:5}
-.rm.open{transform:scale(1.5);opacity:1}
-.rm-lcd{flex:1;width:100%;border-radius:6px;background:#06121f;color:#7be4ff;font:700 8px/1.25 Roboto,Arial,sans-serif;text-align:center;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.rm-lcd span{display:flex;flex-direction:column;align-items:center}
-.rm-lcd b{font-size:12px}.rm-lcd i{font-style:normal}
-.rm-on{display:none!important}.rm.on .rm-on{display:flex!important}.rm.on .rm-off{display:none!important}
-.rm-off b{color:#6b7f95}
-.rm-pw{flex:none;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:#e5484d;display:grid;place-items:center}
-.rm.on .rm-pw{background:#22c55e}
-.rm:not(.on):not(.open) .rm-pw{animation:pu 2s ease-in-out infinite}
-@keyframes pu{50%{box-shadow:0 0 0 6px #e5484d55}}
+#rmt{transform:translate(900px,222px) scale(0.1865);transition:transform .5s cubic-bezier(.25,.8,.25,1)}
+.rmopen #rmt{transform:translate(303px,277px) scale(1)}
+#rmBack{fill:#000;opacity:0;pointer-events:none;transition:opacity .4s}
+.rmopen #rmBack{opacity:.62;pointer-events:auto}
+#rmHit{fill:transparent}.rmopen #rmHit,.rmopen #rmHint{pointer-events:none;opacity:0}
+#rmPw{fill:transparent;pointer-events:none}.rmopen #rmPw{pointer-events:auto}
+#rmLcd{opacity:0;transition:opacity .5s}.acon #rmLcd{opacity:1}
+#rmHint{fill:none;stroke:#ffa21a;stroke-width:5;opacity:0;pointer-events:none}
+#stage:not(.acon):not(.rmopen) #rmHint{animation:hp 2s ease-in-out infinite}
+@keyframes hp{50%{opacity:.9}}
+#idisp{opacity:0;transition:opacity .3s}.ext.dispoff #idisp{opacity:1}

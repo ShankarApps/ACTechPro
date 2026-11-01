@@ -60,10 +60,6 @@
     <div id="stage">
       <img id="imA" src="images/home-cutaway.webp" alt="Split AC cutaway: indoor and outdoor unit with refrigerant pipes">
       <img id="imB" src="images/home-exterior.webp" alt="">
-      <div id="remote" class="rm" aria-label="AC remote">
-        <div class="rm-lcd"><span class="rm-on"><b>24&deg;C</b><i>COOL</i><i>FAN</i><i>AUTO</i></span><span class="rm-off"><b>OFF</b></span></div>
-        <button id="rmPower" class="rm-pw" type="button" aria-label="Power on or off"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 3v8M6.5 6.5a8 8 0 1 0 11 0"/></svg></button>
-      </div>
       <svg id="acSvg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
 <defs>
 <radialGradient id="gr"><stop offset="0" stop-color="#ff3b30" stop-opacity=".7"/><stop offset="1" stop-color="#ff3b30" stop-opacity="0"/></radialGradient>
@@ -84,7 +80,12 @@
 <g class="fd" id="fdA" transform="translate(332 1108)"></g>
 <g class="fd" id="fdB" transform="translate(322 1130)"></g>
 <g class="fd" id="fdC" transform="translate(172 400)"></g>
+<rect id="idisp" x="688" y="362" width="124" height="47" rx="8" fill="#0c0c10"/>
 <g class="lb" id="lb"></g>
+<rect id="rmBack" x="-1500" y="-1500" width="4024" height="4536"/>
+<rect id="rmHint" x="892" y="214" width="94" height="199" rx="20"/>
+<g id="rmt"><image href="images/remote-off.webp" width="417" height="981"/><image id="rmLcd" href="images/remote-lcd-on.webp" x="70" y="90" width="285" height="236"/><circle id="rmPw" cx="126" cy="464" r="78"/></g>
+<rect id="rmHit" x="870" y="198" width="138" height="228"/>
 </svg>
     </div>
   </main>

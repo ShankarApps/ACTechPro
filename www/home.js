@@ -1,9 +1,9 @@
 /* AC Tech Pro: Home tab (opening labels, refrigerant cycle sequence, offline) */
 (function(){
-var NS='http://www.w3.org/2000/svg',$=function(i){return document.getElementById(i);},stage=$('stage'),rm=$('remote'),pw=$('rmPower'),ct=0;
+var NS='http://www.w3.org/2000/svg',$=function(i){return document.getElementById(i);},stage=$('stage'),ct=0;
 function E(t,a,p){var n=document.createElementNS(NS,t);for(var k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;}
 /* labels: name, short description, centre x, centre y, border colour (image coordinates 1024x1536) */
-var L=[['Indoor Unit (Evaporator)','High-wall type',450,200,'#38bdf8'],['Blower','Pulls room air through coil',170,290,'#38bdf8'],['Evaporator Coil','Absorbs room heat',560,400,'#38bdf8'],['Cool Air to Room','',330,650,'#38bdf8'],
+var L=[['Indoor Unit (Evaporator)','High-wall type',450,200,'#38bdf8'],['Blower','Pulls room air through coil',170,290,'#38bdf8'],['Evaporator Coil','Absorbs room heat',560,400,'#38bdf8'],['Cool Air to Room','',330,650,'#38bdf8'],['Remote','Tap to switch AC on',840,120,'#ff9500'],
 ['Liquid Line','Warm liquid \u2192 to indoor unit',515,715,'#ff9500'],['Suction Line','Low-pressure vapour \u2192 compressor',485,805,'#38bdf8'],['Outdoor Unit (Condenser)','',300,880,'#38bdf8'],
 ['Condenser Coil','Heat released outside; vapour \u2192 liquid',330,985,'#ff9500'],['Condenser Fan','Blows outside air over coil',290,1110,'#38bdf8'],['Compressor','Raises pressure & heat',700,1070,'#ff3b30'],['Expansion Valve','Pressure drops, liquid turns cold',620,1235,'#ffd60a']];
 var g=$('lb');
@@ -18,15 +18,17 @@ E('path',{d:'M0 0L'+r*Math.cos(a)+' '+r*Math.sin(a)+'A'+r+' '+r+' 0 '+(w[1]-w[0]
 disc('fdA',170);disc('fdB',178);disc('fdC',72);
 /* sequence (seconds of running time): compressor > condenser + outdoor fan > valve > liquid line up > evaporator + blower > suction line down > breeze > closed view */
 var S=[[.3,'gcp'],[2.5,'gco'],[2.5,'fo'],[4.5,'gva'],[5.5,'l1'],[9,'gev'],[9,'bl'],[11,'l2'],[14,'air'],[15.5,'ext'],[21,'soft']];
-var playing=false,t=0,last=0,raf=0,done=[];
+var playing=false,t=0,last=0,raf=0,done=[],ot=0,busy=false;
 function tick(n){if(!playing)return;t+=Math.min((n-last)/1000,.1);last=n;
 S.forEach(function(e,i){if(!done[i]&&t>=e[0]){done[i]=1;stage.classList.add(e[1]);}});raf=requestAnimationFrame(tick);}
-function on(){playing=true;stage.classList.add('started','run');rm.classList.add('on');last=performance.now();raf=requestAnimationFrame(tick);}
-function off(){playing=false;cancelAnimationFrame(raf);t=0;done=[];stage.className='';rm.classList.remove('on');}
-/* remote: small and dim; first tap enlarges it, then the power button switches the AC on/off */
-function open(){rm.classList.add('open');clearTimeout(ct);ct=setTimeout(function(){rm.classList.remove('open');},3500);}
-rm.addEventListener('click',function(e){var was=rm.classList.contains('open');if(was&&pw.contains(e.target)){playing?off():on();clearTimeout(ct);rm.classList.remove('open');}else open();});
-stage.addEventListener('click',function(e){if(!rm.contains(e.target))rm.classList.remove('open');});
-window.homeStop=function(){off();rm.classList.remove('open');};
+function on(){playing=true;stage.classList.add('started','run','acon');last=performance.now();raf=requestAnimationFrame(tick);}
+function reset(){cancelAnimationFrame(raf);t=0;done=[];stage.className=stage.classList.contains('rmopen')?'rmopen':'';busy=false;}
+function off(){playing=false;stage.classList.remove('run','acon');clearTimeout(ot);if(stage.classList.contains('ext')){stage.classList.add('dispoff');ot=setTimeout(reset,1300);}else reset();}
+/* remote: small at the top-right; tap = enlarge to the centre; orange button = AC on/off, then it shrinks back */
+function openRm(){stage.classList.add('rmopen');clearTimeout(ct);ct=setTimeout(closeRm,7000);}
+function closeRm(){stage.classList.remove('rmopen');clearTimeout(ct);}
+$('rmHit').onclick=openRm;$('rmBack').onclick=closeRm;
+$('rmPw').onclick=function(){if(busy)return;busy=true;if(playing){off();}else{on();setTimeout(function(){busy=false;},900);}setTimeout(closeRm,700);};
+window.homeStop=function(){clearTimeout(ot);playing=false;stage.classList.remove('run','acon');reset();closeRm();};
 document.addEventListener('visibilitychange',function(){if(document.hidden)window.homeStop();});
 })();
