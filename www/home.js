@@ -6,6 +6,9 @@ function E(t,a,p){var n=document.createElementNS(NS,t);for(var k in a)n.setAttri
 var L=[['Indoor Unit (Evaporator)','High-wall type',450,200,'#38bdf8'],['Blower','Pulls room air through coil',170,290,'#38bdf8'],['Evaporator Coil','Absorbs room heat',560,400,'#38bdf8'],['Cool Air to Room','',330,650,'#38bdf8'],['Remote','Tap to switch AC on',840,120,'#ff9500'],
 ['Liquid Line','Warm liquid \u2192 to indoor unit',515,715,'#ff9500'],['Suction Line','Low-pressure vapour \u2192 compressor',485,805,'#38bdf8'],['Outdoor Unit (Condenser)','',300,880,'#38bdf8'],
 ['Condenser Coil','Heat released outside; vapour \u2192 liquid',330,985,'#ff9500'],['Condenser Fan','Blows outside air over coil',290,1110,'#38bdf8'],['Compressor','Raises pressure & heat',700,1070,'#ff3b30'],['Expansion Valve','Pressure drops, liquid turns cold',620,1235,'#ffd60a']];
+var pic=$('pic');
+function fit(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;var pw=Math.min(w,h*2/3),ph=pw*1.5;pic.style.cssText='width:'+pw+'px;height:'+ph+'px;left:'+(w-pw)/2+'px;top:'+(h-ph)/2+'px';}
+if(window.ResizeObserver)new ResizeObserver(fit).observe(stage);window.addEventListener('resize',fit);fit();
 var g=$('lb');
 L.forEach(function(a){var w=Math.max(a[0].length*19,a[1].length*14.5)+40,h=a[1]?78:48,x=Math.min(Math.max(a[2]-w/2,8),1016-w),y=a[3]-h/2;
 E('rect',{x:x,y:y,width:w,height:h,rx:16,fill:'#031528','fill-opacity':.92,stroke:a[4],'stroke-width':3},g);

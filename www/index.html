@@ -57,7 +57,7 @@
   </main>
 
   <main class="app-main" id="tabHome" hidden>
-    <div id="stage">
+    <div id="stage"><div id="pic">
       <img id="imA" src="images/home-cutaway.webp" alt="Split AC cutaway: indoor and outdoor unit with refrigerant pipes">
       <img id="imB" src="images/home-exterior.webp" alt="">
       <svg id="acSvg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -87,7 +87,7 @@
 <g id="rmt"><image href="images/remote-off.webp" width="417" height="981"/><image id="rmLcd" href="images/remote-lcd-on.webp" x="70" y="90" width="285" height="236"/><circle id="rmPw" cx="126" cy="464" r="78"/></g>
 <rect id="rmHit" x="870" y="198" width="138" height="228"/>
 </svg>
-    </div>
+    </div></div>
   </main>
   <main class="app-main" id="tabCalc" hidden><h2 class="section-title">HVAC Calculators</h2><p class="msg">Coming soon.</p></main>
   <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><p class="msg">Coming soon.</p></main>
@@ -109,10 +109,10 @@
   </div>
 
   <nav id="tabBar" class="tab-bar" aria-label="Main tabs">
-    <button type="button" data-tab="home">Home</button>
-    <button type="button" data-tab="error" class="on" aria-current="page">Error Codes</button>
-    <button type="button" data-tab="calc">HVAC Calculators</button>
-    <button type="button" data-tab="settings">Settings</button>
+    <button type="button" data-tab="home"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h4.5v-6h4v6h4.5V10"/></svg></span><span class="tl">Home</span></button>
+    <button type="button" data-tab="error" class="on" aria-current="page"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.1 5.2L3.8 17.3a2 2 0 0 0 2.9 2.9l5.8-5.8a4 4 0 0 0 5.2-5.1l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><span class="tl">Error Codes</span></button>
+    <button type="button" data-tab="calc"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7.5h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg></span><span class="tl">Calculators</span></button>
+    <button type="button" data-tab="settings"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span><span class="tl">Settings</span></button>
   </nav>
 
   <script src="app.js"></script>
