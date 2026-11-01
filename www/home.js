@@ -1,10 +1,10 @@
 /* AC Tech Pro: Home tab (opening labels, refrigerant cycle sequence, offline) */
 (function(){
-var NS='http://www.w3.org/2000/svg',$=function(i){return document.getElementById(i);},stage=$('stage'),pp=$('homePlay'),rs=$('homeRestart');
+var NS='http://www.w3.org/2000/svg',$=function(i){return document.getElementById(i);},stage=$('stage'),rm=$('remote'),pw=$('rmPower'),ct=0;
 function E(t,a,p){var n=document.createElementNS(NS,t);for(var k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;}
 /* labels: name, short description, centre x, centre y, border colour (image coordinates 1024x1536) */
 var L=[['Indoor Unit (Evaporator)','High-wall type',450,200,'#38bdf8'],['Blower','Pulls room air through coil',170,290,'#38bdf8'],['Evaporator Coil','Absorbs room heat',560,400,'#38bdf8'],['Cool Air to Room','',330,650,'#38bdf8'],
-['Liquid Line','Warm liquid \u2192 to indoor unit',640,715,'#ff9500'],['Suction Line','Low-pressure vapour \u2192 compressor',640,805,'#38bdf8'],['Outdoor Unit (Condenser)','',300,880,'#38bdf8'],
+['Liquid Line','Warm liquid \u2192 to indoor unit',515,715,'#ff9500'],['Suction Line','Low-pressure vapour \u2192 compressor',485,805,'#38bdf8'],['Outdoor Unit (Condenser)','',300,880,'#38bdf8'],
 ['Condenser Coil','Heat released outside; vapour \u2192 liquid',330,985,'#ff9500'],['Condenser Fan','Blows outside air over coil',290,1110,'#38bdf8'],['Compressor','Raises pressure & heat',700,1070,'#ff3b30'],['Expansion Valve','Pressure drops, liquid turns cold',620,1235,'#ffd60a']];
 var g=$('lb');
 L.forEach(function(a){var w=Math.max(a[0].length*19,a[1].length*14.5)+40,h=a[1]?78:48,x=Math.min(Math.max(a[2]-w/2,8),1016-w),y=a[3]-h/2;
@@ -21,10 +21,12 @@ var S=[[.3,'gcp'],[2.5,'gco'],[2.5,'fo'],[4.5,'gva'],[5.5,'l1'],[9,'gev'],[9,'bl
 var playing=false,t=0,last=0,raf=0,done=[];
 function tick(n){if(!playing)return;t+=Math.min((n-last)/1000,.1);last=n;
 S.forEach(function(e,i){if(!done[i]&&t>=e[0]){done[i]=1;stage.classList.add(e[1]);}});raf=requestAnimationFrame(tick);}
-function play(){playing=true;stage.classList.add('started','run');pp.textContent='\u275A\u275A Pause';last=performance.now();raf=requestAnimationFrame(tick);}
-function pause(){playing=false;cancelAnimationFrame(raf);stage.classList.remove('run');pp.textContent='\u25B6 Play';}
-pp.onclick=function(){playing?pause():play();};
-rs.onclick=function(){pause();t=0;done=[];stage.className='';};
-window.homeStop=function(){if(playing)pause();};
-document.addEventListener('visibilitychange',function(){if(document.hidden&&playing)pause();});
+function on(){playing=true;stage.classList.add('started','run');rm.classList.add('on');last=performance.now();raf=requestAnimationFrame(tick);}
+function off(){playing=false;cancelAnimationFrame(raf);t=0;done=[];stage.className='';rm.classList.remove('on');}
+/* remote: small and dim; first tap enlarges it, then the power button switches the AC on/off */
+function open(){rm.classList.add('open');clearTimeout(ct);ct=setTimeout(function(){rm.classList.remove('open');},3500);}
+rm.addEventListener('click',function(e){var was=rm.classList.contains('open');if(was&&pw.contains(e.target)){playing?off():on();clearTimeout(ct);rm.classList.remove('open');}else open();});
+stage.addEventListener('click',function(e){if(!rm.contains(e.target))rm.classList.remove('open');});
+window.homeStop=function(){off();rm.classList.remove('open');};
+document.addEventListener('visibilitychange',function(){if(document.hidden)window.homeStop();});
 })();
