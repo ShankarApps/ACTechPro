@@ -57,49 +57,33 @@
   </main>
 
   <main class="app-main" id="tabHome" hidden>
-    <h2 class="home-title">How an AC works</h2>
     <div class="home-bar"><button id="homePlay" class="home-btn" type="button">&#9654; Play</button><button id="homeRestart" class="home-btn sec" type="button">&#8635; Restart</button></div>
-    <svg id="acSvg" class="home-svg" viewBox="0 0 360 590" role="img" aria-label="Animated refrigeration cycle of a split AC">
+    <div id="stage">
+      <img id="imA" src="images/home-cutaway.webp" alt="Split AC cutaway: indoor and outdoor unit with refrigerant pipes">
+      <img id="imB" src="images/home-exterior.webp" alt="">
+      <svg id="acSvg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
 <defs>
-<linearGradient id="gu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1f5fa"/><stop offset="1" stop-color="#b9c4d2"/></linearGradient>
-<linearGradient id="gc" x1="0" x2="1"><stop offset="0" stop-color="#14306e"/><stop offset=".5" stop-color="#3b6fd8"/><stop offset="1" stop-color="#0c1c44"/></linearGradient>
-<radialGradient id="mg"><stop offset="0" stop-color="#9fe8ff" stop-opacity=".9"/><stop offset="1" stop-color="#9fe8ff" stop-opacity="0"/></radialGradient>
-<linearGradient id="ag" gradientUnits="userSpaceOnUse" x1="0" y1="104" x2="0" y2="320"><stop offset="0" stop-color="#d6f6ff"/><stop offset="1" stop-color="#7dd3fc" stop-opacity="0"/></linearGradient>
-<linearGradient id="ct" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".3"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient>
+<radialGradient id="gr"><stop offset="0" stop-color="#ff3b30" stop-opacity=".7"/><stop offset="1" stop-color="#ff3b30" stop-opacity="0"/></radialGradient>
+<radialGradient id="go"><stop offset="0" stop-color="#ff9500" stop-opacity=".6"/><stop offset="1" stop-color="#ff9500" stop-opacity="0"/></radialGradient>
+<radialGradient id="gy"><stop offset="0" stop-color="#ffd60a" stop-opacity=".8"/><stop offset="1" stop-color="#ffd60a" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="#2f9bff" stop-opacity=".65"/><stop offset="1" stop-color="#2f9bff" stop-opacity="0"/></radialGradient>
+<radialGradient id="mg"><stop offset="0" stop-color="#bfefff" stop-opacity=".85"/><stop offset="1" stop-color="#bfefff" stop-opacity="0"/></radialGradient>
+<linearGradient id="ag" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="830"><stop offset="0" stop-color="#e3f8ff"/><stop offset="1" stop-color="#7dd3fc" stop-opacity="0"/></linearGradient>
+<linearGradient id="ct" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".28"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></linearGradient>
 </defs>
-<path id="tint" d="M66 104H294L332 320H28z" fill="url(#ct)"/>
-<rect x="50" y="6" width="260" height="96" rx="14" fill="url(#gu)"/>
-<rect x="60" y="22" width="240" height="54" rx="8" fill="#0b1524"/>
-<g id="ev"><rect x="66" y="30" width="130" height="40" rx="4" fill="#1d5fd6"/><path d="M70 50H192" stroke="#8fd0ff" stroke-width="40" stroke-dasharray="2 6" opacity=".6"/></g>
-<circle cx="250" cy="49" r="22" fill="#1a2535" stroke="#6b7a90"/>
-<g transform="translate(250 49)"><path class="spin2" d="M0 0L17 0M0 0L8 15M0 0L-8 15M0 0L-17 0M0 0L-8-15M0 0L8-15" stroke="#9fb0c8" stroke-width="4" stroke-linecap="round"/></g>
-<rect id="lv" x="70" y="94" width="220" height="6" rx="3" fill="#cfd8e4"/>
-<g id="air"><path class="ai" stroke="url(#ag)" d="M94 104Q80 210 66 320"/><path class="ai" stroke="url(#ag)" d="M126 104Q117 210 109 320"/><path class="ai" stroke="url(#ag)" d="M158 104Q155 210 152 320"/><path class="ai" stroke="url(#ag)" d="M194 104Q197 210 200 320"/><path class="ai" stroke="url(#ag)" d="M226 104Q234 210 242 320"/><path class="ai" stroke="url(#ag)" d="M258 104Q271 210 285 320"/></g>
-<g id="ms"><ellipse class="m" cx="100" cy="120" rx="24" ry="10" fill="url(#mg)" style="animation-delay:0.0s"/><ellipse class="m" cx="138" cy="120" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-0.6s"/><ellipse class="m" cx="176" cy="120" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-1.2s"/><ellipse class="m" cx="214" cy="120" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-1.8s"/><ellipse class="m" cx="252" cy="120" rx="24" ry="10" fill="url(#mg)" style="animation-delay:-0.3s"/></g>
-<g transform="translate(0 70)">
-<rect x="40" y="290" width="280" height="210" rx="14" fill="url(#gu)"/>
-<rect x="50" y="302" width="260" height="186" rx="8" fill="#0b1524"/>
-<rect x="146" y="318" width="92" height="150" rx="4" fill="#2a1410"/>
-<circle cx="280" cy="396" r="34" fill="#1a2535" stroke="#6b7a90" stroke-width="2"/>
-<g transform="translate(280 396) scale(.8)"><g class="spin1" fill="#9fb0c8"><path d="M0 0q10-20 2-40q-16 14-2 40z"/><path d="M0 0q10-20 2-40q-16 14-2 40z" transform="rotate(72)"/><path d="M0 0q10-20 2-40q-16 14-2 40z" transform="rotate(144)"/><path d="M0 0q10-20 2-40q-16 14-2 40z" transform="rotate(216)"/><path d="M0 0q10-20 2-40q-16 14-2 40z" transform="rotate(288)"/></g></g>
-<circle cx="280" cy="396" r="6" fill="#5b6b82"/>
-<rect id="cp" x="58" y="330" width="56" height="130" rx="24" fill="url(#gc)"/>
-</g>
-<g fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-<path d="M66 50H24V510H60" stroke="#2f7bff"/>
-<path d="M114 522H156" stroke="#ef2b2b"/>
-<path d="M156 522H228V498H156V474H228V450H156V426H228V402" stroke="#ff5a1f"/>
-<path d="M228 402V382H336V234" stroke="#ffa21a"/>
-<path d="M336 210V86H130V68" stroke="#5cc8ff"/>
-</g>
-<path id="f1" class="fl" d="M114 522H156"/>
-<path id="f2" class="fl" d="M156 522H228V498H156V474H228V450H156V426H228V402"/>
-<path id="f3" class="fl" d="M228 402V382H336V234"/>
-<path id="f4" class="fl" d="M336 210V86H130V68"/>
-<path id="f5" class="fl" d="M66 50H24V510H60"/>
-<g id="vp"><rect x="328" y="212" width="16" height="22" rx="3" fill="#d4a017"/><rect x="324" y="219" width="24" height="8" rx="3" fill="#f2c94c"/></g>
+<g id="air"><path d="M150 570H730L810 850H70z" fill="url(#ct)"/><path class="ai" stroke="url(#ag)" d="M170 560Q116 700 35 830"/><path class="ai" stroke="url(#ag)" d="M278 560Q245 700 197 830"/><path class="ai" stroke="url(#ag)" d="M386 560Q375 700 359 830"/><path class="ai" stroke="url(#ag)" d="M494 560Q504 700 521 830"/><path class="ai" stroke="url(#ag)" d="M602 560Q634 700 683 830"/><path class="ai" stroke="url(#ag)" d="M710 560Q764 700 845 830"/><g id="ms"><ellipse class="m" cx="220" cy="610" rx="70" ry="28" fill="url(#mg)" style="animation-delay:0s"/><ellipse class="m" cx="340" cy="610" rx="70" ry="28" fill="url(#mg)" style="animation-delay:-0.6s"/><ellipse class="m" cx="460" cy="610" rx="70" ry="28" fill="url(#mg)" style="animation-delay:-1.2s"/><ellipse class="m" cx="580" cy="610" rx="70" ry="28" fill="url(#mg)" style="animation-delay:-1.8s"/><ellipse class="m" cx="700" cy="610" rx="70" ry="28" fill="url(#mg)" style="animation-delay:-0.3s"/></g></g>
+<g class="gl" id="gCp"><ellipse cx="722" cy="1130" rx="110" ry="150" fill="url(#gr)"/></g>
+<g class="gl" id="gCo"><ellipse cx="335" cy="1110" rx="250" ry="200" fill="url(#go)"/></g>
+<g class="gl" id="gVa"><circle cx="595" cy="1165" r="75" fill="url(#gy)"/></g>
+<g class="gl" id="gEv"><ellipse cx="482" cy="408" rx="270" ry="110" fill="url(#gb)"/></g>
+<g class="gl" id="gBl"><circle cx="172" cy="400" r="105" fill="url(#gb)"/></g>
+<path id="flL" class="fl" d="M868 1164H910Q939 1164 939 1130V470Q939 433 905 433H878"/><path id="flS" class="fl" d="M878 472H895Q908 472 908 500V1085Q908 1124 880 1124H866"/>
+<g class="fd" id="fdA" transform="translate(332 1108)"></g>
+<g class="fd" id="fdB" transform="translate(322 1130)"></g>
+<g class="fd" id="fdC" transform="translate(172 400)"></g>
 <g class="lb" id="lb"></g>
 </svg>
+    </div>
   </main>
   <main class="app-main" id="tabCalc" hidden><h2 class="section-title">HVAC Calculators</h2><p class="msg">Coming soon.</p></main>
   <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><p class="msg">Coming soon.</p></main>
