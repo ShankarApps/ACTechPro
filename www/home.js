@@ -19,11 +19,13 @@ function disc(id,r){var p=$(id),s=E('g',{'class':'sp'},p);E('circle',{r:r,fill:'
 [[0,50],[110,135],[200,265]].forEach(function(w){var a=w[0]*Math.PI/180,b=w[1]*Math.PI/180;
 E('path',{d:'M0 0L'+r*Math.cos(a)+' '+r*Math.sin(a)+'A'+r+' '+r+' 0 '+(w[1]-w[0]>180?1:0)+' 1 '+r*Math.cos(b)+' '+r*Math.sin(b)+'Z',fill:'#fff','fill-opacity':.24},s);});}
 disc('fdA',170);disc('fdB',178);disc('fdC',72);
-/* sequence (seconds of running time): compressor > condenser + outdoor fan > valve > liquid line up > evaporator + blower > suction line down > breeze > closed view */
-var S=[[.3,'gcp'],[2.5,'gco'],[2.5,'fo'],[4.5,'gva'],[5.5,'l1'],[9,'gev'],[9,'bl'],[11,'l2'],[14,'air'],[15.5,'ext'],[21,'soft']];
+/* sequence (seconds): indoor blower + plain air first > outdoor fan + compressor > condenser > valve > liquid line up > evaporator cools + suction line > cold breeze with mist > closed view */
+var S=[[0,'ind'],[0,'bl'],[4,'fo'],[4,'gcp'],[5.5,'gco'],[7,'gva'],[8,'l1'],[11,'gev'],[11,'l2'],[14,'air'],[15.5,'ext'],[21,'soft']];
 var playing=false,t=0,last=0,raf=0,done=[],ot=0,busy=false;
 function tick(n){if(!playing)return;t+=Math.min((n-last)/1000,.1);last=n;
 S.forEach(function(e,i){if(!done[i]&&t>=e[0]){done[i]=1;stage.classList.add(e[1]);}});raf=requestAnimationFrame(tick);}
+var AC=null;
+function beep(n,long){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();var t0=AC.currentTime;for(var i=0;i<n;i++){var s=t0+i*.2,o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=2200;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(.25,s+.01);g.gain.exponentialRampToValueAtTime(.001,s+(long?.45:.12));o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+(long?.5:.15));}}catch(e){}}
 function on(){playing=true;stage.classList.add('started','run','acon');last=performance.now();raf=requestAnimationFrame(tick);}
 function reset(){cancelAnimationFrame(raf);t=0;done=[];stage.className=stage.classList.contains('rmopen')?'rmopen':'';busy=false;}
 function off(){playing=false;stage.classList.remove('run','acon');clearTimeout(ot);if(stage.classList.contains('ext')){stage.classList.add('dispoff');ot=setTimeout(reset,1300);}else reset();}
@@ -31,7 +33,7 @@ function off(){playing=false;stage.classList.remove('run','acon');clearTimeout(o
 function openRm(){stage.classList.add('rmopen');clearTimeout(ct);ct=setTimeout(closeRm,7000);}
 function closeRm(){stage.classList.remove('rmopen');clearTimeout(ct);}
 $('rmHit').onclick=openRm;$('rmBack').onclick=closeRm;
-$('rmPw').onclick=function(){if(busy)return;busy=true;if(playing){off();}else{on();setTimeout(function(){busy=false;},900);}setTimeout(closeRm,700);};
+$('rmPw').onclick=function(){if(busy)return;busy=true;if(playing){beep(1,true);off();}else{beep(2,false);on();setTimeout(function(){busy=false;},900);}setTimeout(closeRm,700);};
 window.homeStop=function(){clearTimeout(ot);playing=false;stage.classList.remove('run','acon');reset();closeRm();};
 document.addEventListener('visibilitychange',function(){if(document.hidden)window.homeStop();});
 })();
