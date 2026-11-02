@@ -1,0 +1,26 @@
+/* AC Tech Pro: HVAC Calculators tab */
+.calc-search{width:100%;box-sizing:border-box;min-height:48px;margin:0 0 6px;padding:0 14px;border-radius:14px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:1rem}
+.calc-group{margin:18px 0 8px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.calc-card{display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;text-align:left;padding:12px 14px;margin-bottom:10px;border-radius:16px;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.calc-card:active{filter:brightness(.85)}
+.calc-card.soon{opacity:.5}
+.calc-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.calc-ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.calc-tx{min-width:0}.calc-tx b{display:block;font-size:1rem}.calc-tx small{color:var(--muted);font-size:.8rem}
+.calc-tag{margin-left:auto;flex:none;font-size:.7rem;font-weight:800;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:2px 6px}
+.calc-back{min-height:44px;background:none;border:0;color:var(--accent);font-size:1rem;font-weight:700;padding:0}
+.cf{margin-bottom:12px}
+.cf label{display:block;font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:4px}
+.cf input{width:100%;box-sizing:border-box;min-height:52px;padding:0 14px;border-radius:14px;border:2px solid var(--border);background:var(--surface);color:var(--text);font-size:1.3rem;font-weight:700}
+.cf input:focus{outline:none;border-color:var(--accent)}
+.cf.src input{border-color:var(--accent)}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.cchip{min-height:40px;padding:0 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:700}
+.cchip:active{background:var(--accent-soft)}
+.calc-note{font-size:.82rem;color:var(--muted);margin:10px 0}
+.calc-actions{display:flex;gap:10px;margin:14px 0}
+.calc-btn{flex:1;min-height:48px;border-radius:24px;border:2px solid var(--border);background:var(--surface);color:var(--text);font-weight:800}
+.calc-btn.pri{border-color:var(--accent);background:var(--accent-soft)}
+.calc-how{margin:10px 0;color:var(--muted);font-size:.85rem}
+.calc-how summary{min-height:40px;display:flex;align-items:center;font-weight:700;color:var(--text)}
+#calcTitle{text-transform:none;letter-spacing:0;font-size:1.15rem;margin:2px 0 12px;color:var(--text)}

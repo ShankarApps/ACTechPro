@@ -11,6 +11,7 @@
   <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="calc.css" />
 </head>
 <body>
 
@@ -89,7 +90,18 @@
 </svg>
     </div></div>
   </main>
-  <main class="app-main" id="tabCalc" hidden><h2 class="section-title">HVAC Calculators</h2><p class="msg">Coming soon.</p></main>
+  <main class="app-main" id="tabCalc" hidden>
+    <div id="calcList">
+      <h2 class="section-title">HVAC Calculators</h2>
+      <input id="calcSearch" class="calc-search" type="search" placeholder="Search calculators" autocomplete="off">
+      <div id="calcGroups"></div>
+    </div>
+    <div id="calcView" hidden>
+      <button id="calcBack" class="calc-back" type="button">&larr; Calculators</button>
+      <h2 id="calcTitle" class="section-title"></h2>
+      <div id="calcBody"></div>
+    </div>
+  </main>
   <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><p class="msg">Coming soon.</p></main>
 
   <!-- Bottom back bar (series and code screens) -->
@@ -117,5 +129,6 @@
 
   <script src="app.js"></script>
   <script src="home.js"></script>
+  <script src="calc.js"></script>
 </body>
 </html>

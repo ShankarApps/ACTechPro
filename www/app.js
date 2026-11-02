@@ -204,6 +204,7 @@ function goBack() {
     return true;
   }
   if (current === 'series') { activeBrand = null; show('brand'); return true; }
+  if (currentTab === 'calc' && window.calcBack && window.calcBack()) return true;   // calculator screen: Back goes to the list
   if (currentTab !== 'home') { setTab('home'); return true; }   // other tabs: Back goes to Home
   return false;
 }
