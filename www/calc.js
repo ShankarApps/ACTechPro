@@ -1,4 +1,4 @@
-/* AC Tech Pro: HVAC Calculators (offline, no libraries). Stages A to C. */
+/* AC Tech Pro: HVAC Calculators (offline, no libraries). Stages A to D. */
 (function(){
 var $=function(i){return document.getElementById(i);};
 var IC={snow:'<path d="M12 2v20M4.2 7l15.6 10M19.8 7 4.2 17"/>',gauge:'<path d="M4 16a8 8 0 1 1 16 0M12 16l4-5"/><circle cx="12" cy="16" r="1"/>',therm:'<path d="M10 14V5a2 2 0 0 1 4 0v9a4 4 0 1 1-4 0z"/>',wind:'<path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h8"/>',bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',cable:'<path d="M4 6h6v12h4V6h6"/>',coin:'<circle cx="12" cy="12" r="9"/><path d="M9 8h6M9 12h6M10 8c4 0 4 5 0 5l4 4"/>'};
@@ -173,6 +173,47 @@ function costBuild(b){
  $('cCopy').onclick=function(){copyTxt(txt);};
  labels();calc();}
 
+/* ---------- Stage D: Delta-T and airflow (CFM, CMH, air-side capacity) ---------- */
+var CMH_CFM=1.699011;
+function rb2(name){return '<div class="calc-res"><div class="sm">'+name+'</div><div class="big" id="aB">\u2014</div><div class="sm" id="a1"></div><div class="sm" id="a2"></div><div class="sm" id="aW"></div></div>';}
+function A2(big,ln,w){$('aB').textContent=big;for(var i=1;i<=2;i++)$('a'+i).textContent=(ln&&ln[i-1])||'';$('aW').textContent=w||'';}
+function deltaBuild(b){
+ var tu=st('tu','C'),src='cfm',txt1='',txt2='',dC=null;
+ b.innerHTML=lab('Temperature unit')+chips('chTu',TUS,tu)+lf('ra','Return')+lf('sa','Supply')+lab('Your target range (optional, empty = typical range)')+'<div class="crow">'+lf('lo','Min')+lf('hi','Max')+'</div>'+rbox('Delta-T (return \u2212 supply)')+lab('Airflow')+lf('cfm','Airflow (CFM)')+lf('cmh','Airflow (m\u00B3/h, CMH)')+rb2('Air-side cooling estimate')+ACT+'<p class="calc-note">Let the AC run 10 to 15 minutes first. Measure return air at the filter grille and supply air at the louvre, with the thermometer in the airstream. The typical range is only a guide and changes with humidity and model. Rule of thumb: about 400 CFM per TR.</p><details class="calc-how"><summary>How it is calculated</summary><p>Delta-T = return air \u2212 supply air. Typical range 8 to 12 \u00B0C (14 to 22 \u00B0F).<br>1 CFM = 1.699 m\u00B3/h.<br>Cooling (BTU/h) = 1.08 \u00D7 CFM \u00D7 Delta-T (\u00B0F). kW = BTU/h \u00F7 3,412. TR = BTU/h \u00F7 12,000.<br>This counts only the temperature drop of the air. Moisture removal adds more, so the real total can be higher.</p></details>';
+ function labels(){var u='\u00B0'+tu;$('lb_ra').textContent='Return air temperature ('+u+')';$('lb_sa').textContent='Supply air temperature ('+u+')';$('lb_lo').textContent='Target min (\u0394 '+u+')';$('lb_hi').textContent='Target max (\u0394 '+u+')';}
+ function dv(c){return t1(tu==='F'?c*1.8:c);}
+ function delta(){var ra=num($('in_ra').value),sa=num($('in_sa').value),lo=num($('in_lo').value),hi=num($('in_hi').value),u=' \u00B0'+tu;txt1='';dC=null;
+  if(ra===null||sa===null){R('\u2014');air();return;}
+  var d=ra-sa,hint='',w='',stt;dC=tu==='F'?d/1.8:d;
+  var loC=lo!==null?(tu==='F'?lo/1.8:lo):8,hiC=hi!==null?(tu==='F'?hi/1.8:hi):12,own=lo!==null||hi!==null;
+  var rng=(own?'your range ':'typical range ')+dv(loC)+' to '+dv(hiC)+u;
+  if(dC<0){stt='Supply air is warmer than return air';w='Check the sensor positions and that the AC is in cooling mode.';}
+  else if(dC<loC){stt='Low, below '+rng;hint='Check filter and coil, gas charge (superheat and subcooling) and compressor.';}
+  else if(dC>hiC){stt='High, above '+rng;hint='Check airflow: dirty filter or coil, blower speed, blocked return.';}
+  else{stt='Normal, within '+rng;}
+  R(t1(d)+u,['Return '+t1(ra)+u+', supply '+t1(sa)+u,stt,hint],w);
+  txt1='Delta-T '+t1(d)+u+' (return '+t1(ra)+', supply '+t1(sa)+')';
+  air();}
+ function air(){var s=num($('in_'+src).value),o=src==='cfm'?'cmh':'cfm',cfm,cmh;txt2='';
+  $('cf_cfm').classList.toggle('src',src==='cfm');$('cf_cmh').classList.toggle('src',src==='cmh');
+  if(s===null||s<=0){if(s===null)$('in_'+o).value='';A2('\u2014');return;}
+  if(src==='cfm'){cfm=s;cmh=s*CMH_CFM;$('in_cmh').value=fmt(cmh);}else{cmh=s;cfm=s/CMH_CFM;$('in_cfm').value=fmt(cfm);}
+  var cv=fmt(cfm)+' CFM = '+fmt(cmh)+' CMH';
+  if(dC===null||dC<=0){A2(src==='cfm'?fmt(cmh)+' CMH':fmt(cfm)+' CFM',[cv],dC===null?'Enter return and supply temperature above to estimate the cooling capacity.':'Delta-T must be above 0 to estimate the capacity.');txt2=cv;return;}
+  var btu=1.08*cfm*dC*1.8,kw=btu/KW_BTU,tr=btu/12000;
+  A2(fmt(kw)+' kW',[fmt(tr)+' TR, '+fmt(btu)+' BTU/h','Airflow: '+cv]);
+  txt2='about '+fmt(kw)+' kW ('+fmt(tr)+' TR) at '+cv;}
+ wire('chTu',function(k){var old=tu;
+  ['ra','sa'].forEach(function(id){var v=num($('in_'+id).value);if(v!==null)$('in_'+id).value=t1(fromC(toC(v,old),k));});
+  ['lo','hi'].forEach(function(id){var v=num($('in_'+id).value);if(v!==null)$('in_'+id).value=t1(old==='C'&&k==='F'?v*1.8:old==='F'&&k==='C'?v/1.8:v);});
+  tu=k;sv('tu',k);labels();delta();});
+ onIn(['ra','sa','lo','hi'],delta);
+ $('in_cfm').addEventListener('input',function(){src='cfm';air();});
+ $('in_cmh').addEventListener('input',function(){src='cmh';air();});
+ $('cReset').onclick=function(){['ra','sa','lo','hi','cfm','cmh'].forEach(function(id){$('in_'+id).value='';});src='cfm';delta();};
+ $('cCopy').onclick=function(){copyTxt([txt1,txt2].filter(Boolean).join('; '));};
+ labels();delta();}
+
 var CALCS=[
 {id:'trbtu',g:'Capacity and Airflow',n:'TR · BTU/h · kW',d:'Convert cooling capacity',ic:'snow',kw:'ton refrigeration btu kilowatt kcal capacity tonnage',build:function(b){linked(b,{chips:[0.75,1,1.5,2,2.5,3,4,5],chipUnit:'TR',fields:[
  {id:'tr',label:'Tons of refrigeration (TR)',unit:'TR',toBase:function(v){return v*KW_TR;},fromBase:function(k){return k/KW_TR;}},
@@ -181,7 +222,7 @@ var CALCS=[
  {id:'kcal',label:'Kilocalorie per hour (kcal/h)',unit:'kcal/h',toBase:function(v){return v/KW_KCAL;},fromBase:function(k){return k*KW_KCAL;}}],
  note:'kW here is <b>cooling capacity</b>, not the electrical power the AC draws from the supply.',
  how:'<p>1 TR = 12,000 BTU/h = 3.517 kW = 3,024 kcal/h.<br>1 kW = 3,412 BTU/h = 860 kcal/h.</p>'});}},
-{id:'deltat',g:'Capacity and Airflow',n:'Delta-T and CFM',d:'Air-side check, CFM to CMH',ic:'wind',soon:1},
+{id:'deltat',g:'Capacity and Airflow',n:'Delta-T and CFM',d:'Air-side check, CFM to CMH',ic:'wind',kw:'delta t temperature difference return supply air cfm cmh airflow',build:deltaBuild},
 {id:'ptchart',g:'Refrigerant',n:'Pressure-temperature chart',d:'R32, R410A, R22, R134a',ic:'gauge',kw:'pt chart saturation r32 r410a r22 r134a',build:ptBuild},
 {id:'pressure',g:'Refrigerant',n:'Pressure converter',d:'psi · bar · kg/cm² · kPa · MPa',ic:'gauge',kw:'psi bar kg/cm2 kpa mpa gauge pressure convert',build:function(b){linked(b,{fields:[
  {id:'psi',label:'psi',unit:'psi',toBase:function(v){return v/BAR_PSI;},fromBase:function(k){return k*BAR_PSI;}},
@@ -203,8 +244,12 @@ function list(q){var box=$('calcGroups');box.innerHTML='';q=(q||'').toLowerCase(
  CALCS.forEach(function(c){if(q&&(c.n+' '+c.d+' '+(c.kw||'')).toLowerCase().indexOf(q)<0)return;
   if(c.g!==last){var h=document.createElement('div');h.className='calc-group';h.textContent=c.g;box.appendChild(h);last=c.g;}box.appendChild(card(c));n++;});
  if(!n){var p=document.createElement('p');p.className='calc-note';p.textContent='No calculator found.';box.appendChild(p);}}
-function openCalc(c){$('calcList').hidden=true;$('calcView').hidden=false;$('calcTitle').textContent=c.n;c.build($('calcBody'));window.scrollTo(0,0);}
-window.calcBack=function(){if($('calcView').hidden)return false;$('calcView').hidden=true;$('calcList').hidden=false;$('calcBody').innerHTML='';document.body.classList.remove('typing');window.scrollTo(0,0);return true;};
+/* Android back button: each opened calculator adds one history entry, so Back returns to the list first. */
+var pushed=false;
+function closeCalc(){$('calcView').hidden=true;$('calcList').hidden=false;$('calcBody').innerHTML='';document.body.classList.remove('typing');window.scrollTo(0,0);}
+function openCalc(c){$('calcList').hidden=true;$('calcView').hidden=false;$('calcTitle').textContent=c.n;c.build($('calcBody'));window.scrollTo(0,0);try{history.pushState({actCalc:1},'');pushed=true;}catch(e){pushed=false;}}
+window.calcBack=function(){if($('calcView').hidden)return false;if(pushed){try{history.back();setTimeout(function(){if(!$('calcView').hidden)closeCalc();},400);return true;}catch(e){}}closeCalc();return true;};
+window.addEventListener('popstate',function(){pushed=false;if(!$('calcView').hidden)closeCalc();});
 $('calcBack').onclick=window.calcBack;
 $('calcSearch').addEventListener('input',function(){list(this.value);});
 document.addEventListener('focusin',function(e){if(e.target.closest&&e.target.closest('#tabCalc')&&e.target.tagName==='INPUT')document.body.classList.add('typing');});
