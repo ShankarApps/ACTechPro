@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="calc.css" />
+  <link rel="stylesheet" href="settings.css" />
+  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("actp_theme")||"dark")}catch(e){}</script>
 </head>
 <body>
 
@@ -104,7 +106,7 @@
       <div id="calcBody"></div>
     </div>
   </main>
-  <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><p class="msg">Coming soon.</p></main>
+  <main class="app-main" id="tabSettings" hidden><h2 class="section-title">Settings</h2><h3 class="set-sub">Theme</h3><div id="themeList" class="theme-list"></div></main>
 
   <!-- Bottom back bar (series and code screens) -->
   <nav id="bottomBar" class="bottom-bar" hidden>
@@ -133,5 +135,6 @@
   <script src="home.js"></script>
   <script src="ptdata.js"></script>
   <script src="calc.js"></script>
+  <script src="settings.js"></script>
 </body>
 </html>
